@@ -1,41 +1,53 @@
-// Estilos personalizados para el perfil de Germán
 export const germanStyles = {
-  // Estilos del Header
+  // HEADER
   header: {
-    background: "linear-gradient(135deg, #1a0a1a 0%, #2d0a1a 100%)",
-    padding: "60px 40px",
+    backgroundImage:
+      "linear-gradient(135deg, rgba(26,10,26,0.9) 0%, rgba(45,10,26,0.9) 100%), url('/ger/fondo_perfil.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center 20%",
+    backgroundRepeat: "no-repeat",
+    backgroundBlendMode: "overlay",
+    padding: "80px 40px",
     borderBottom: "3px solid #8b0000",
+    boxShadow: "0 0 40px rgba(255, 0, 0, 0.3)",
   },
+
   headerContent: (isTablet) => ({
     margin: "0 auto",
     display: "flex",
     flexDirection: isTablet ? "row" : "column",
     alignItems: "center",
+    justifyContent: "center",
     columnGap: "40px",
+    rowGap: "20px",
   }),
+
   profileImage: {
-    width: "200px",
-    height: "200px",
+    width: "220px",
+    height: "220px",
     borderRadius: "50%",
     objectFit: "cover",
-    objectPosition: "center top",
+    objectPosition: "center 20%",
     border: "4px solid #ff0000",
-    boxShadow: "0 0 30px rgba(255, 0, 0, 0.5)",
+    boxShadow: "0 0 40px rgba(255, 0, 0, 0.6)",
+    transition: "transform 0.4s ease",
   },
+
   name: {
-    fontSize: "48px",
+    fontSize: "52px",
     color: "#ff0000",
     marginBottom: "10px",
     fontFamily: "Creepster, cursive",
-    textShadow: "0 0 15px #ff0000",
+    textShadow: "0 0 20px #ff0000",
   },
+
   role: {
     fontSize: "24px",
     color: "#b0b0b0",
     fontStyle: "italic",
   },
 
-  // Estilos de Info
+  // INFO
   info: {
     padding: "60px 40px",
   },
@@ -65,7 +77,7 @@ export const germanStyles = {
     border: "1px solid #ff0000",
   },
 
-  // Estilos de Sections
+  // SECTIONS
   sections: {
     padding: "0 40px 60px",
   },
@@ -94,18 +106,34 @@ export const germanStyles = {
     fontSize: "20px",
     color: "#ff0000",
   },
-  list: {
-    listStyle: "none",
-    padding: 0,
-    margin: "20px 0 0 0",
+  videoGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+    gap: "30px",
+    marginTop: "20px",
+    padding: "0 10px",
   },
-  listItem: {
-    marginBottom: "12px",
+  videoCard: {
+    background: "linear-gradient(135deg, #1a0a1a 0%, #2a0a1a 100%)",
+    border: "2px solid #8b0000",
+    borderRadius: "12px",
+    padding: "15px",
+    boxShadow: "0 0 15px rgba(255, 0, 0, 0.3)",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
   },
-  link: {
-    fontSize: "16px",
-    color: "#b0b0b0",
-    textDecoration: "none",
-    transition: "color 0.3s ease",
+  videoCardHover: {
+    transform: "scale(1.05)",
+    boxShadow: "0 0 25px rgba(255, 0, 0, 0.6)",
+  },
+  videoTitle: {
+    color: "#ff0000",
+    fontSize: "18px",
+    marginBottom: "10px",
+    textAlign: "center",
+    fontFamily: "Creepster, cursive",
+  },
+  videoFrame: {
+    borderRadius: "8px",
+    transition: "transform 0.3s ease",
   },
 };

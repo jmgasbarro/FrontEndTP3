@@ -8,11 +8,12 @@ import { germanStyles as styles } from "./germanStyles";
 export default function GermanProfile() {
   const [showMovies, setShowMovies] = useState(false);
   const [showMusic, setShowMusic] = useState(false);
+  const [hoveredVideo, setHoveredVideo] = useState(null);
   const isTablet = useMediaQuery("(min-width: 768px)");
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      {/* Header Section */}
+      {/* Header */}
       <section style={styles.header}>
         <div style={styles.headerContent(isTablet)}>
           <img
@@ -27,7 +28,7 @@ export default function GermanProfile() {
         </div>
       </section>
 
-      {/* Info Section */}
+      {/* Info */}
       <section style={styles.info}>
         <div style={{ margin: "0 auto" }}>
           <div style={{ marginBottom: "40px" }}>
@@ -48,60 +49,76 @@ export default function GermanProfile() {
         </div>
       </section>
 
-      {/* Movies and Music Section */}
+      {/* Movies & Music */}
       <section style={styles.sections}>
         <div style={{ margin: "0 auto", display: "flex", flexDirection: "column", gap: "30px" }}>
-          {/* Movies */}
+          {/* Películas */}
           <div style={styles.section}>
-            <button
-              style={styles.toggleButton}
-              onClick={() => setShowMovies(!showMovies)}
-            >
+            <button style={styles.toggleButton} onClick={() => setShowMovies(!showMovies)}>
               <span style={styles.buttonText}>Películas Favoritas</span>
               <span style={styles.arrow}>{showMovies ? "▼" : "▶"}</span>
             </button>
             {showMovies && (
-              <ul style={styles.list}>
+              <div style={styles.videoGrid}>
                 {germanData.movies.map((movie, index) => (
-                  <li key={index} style={styles.listItem}>
-                    <a
-                      href={movie.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={styles.link}
-                    >
-                      {movie.title}
-                    </a>
-                  </li>
+                  <div
+                    key={index}
+                    style={{
+                      ...styles.videoCard,
+                      ...(hoveredVideo === index ? styles.videoCardHover : {}),
+                    }}
+                    onMouseEnter={() => setHoveredVideo(index)}
+                    onMouseLeave={() => setHoveredVideo(null)}
+                  >
+                    <h3 style={styles.videoTitle}>{movie.title}</h3>
+                    <iframe
+                      width="100%"
+                      height="200"
+                      src={movie.url}
+                      title={movie.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      style={styles.videoFrame}
+                    ></iframe>
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
           </div>
 
-          {/* Music */}
+          {/* Música */}
           <div style={styles.section}>
-            <button
-              style={styles.toggleButton}
-              onClick={() => setShowMusic(!showMusic)}
-            >
+            <button style={styles.toggleButton} onClick={() => setShowMusic(!showMusic)}>
               <span style={styles.buttonText}>Música Favorita</span>
               <span style={styles.arrow}>{showMusic ? "▼" : "▶"}</span>
             </button>
             {showMusic && (
-              <ul style={styles.list}>
+              <div style={styles.videoGrid}>
                 {germanData.music.map((song, index) => (
-                  <li key={index} style={styles.listItem}>
-                    <a
-                      href={song.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={styles.link}
-                    >
-                      {song.title}
-                    </a>
-                  </li>
+                  <div
+                    key={index}
+                    style={{
+                      ...styles.videoCard,
+                      ...(hoveredVideo === index ? styles.videoCardHover : {}),
+                    }}
+                    onMouseEnter={() => setHoveredVideo(index)}
+                    onMouseLeave={() => setHoveredVideo(null)}
+                  >
+                    <h3 style={styles.videoTitle}>{song.title}</h3>
+                    <iframe
+                      width="100%"
+                      height="200"
+                      src={song.url}
+                      title={song.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      style={styles.videoFrame}
+                    ></iframe>
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
           </div>
         </div>

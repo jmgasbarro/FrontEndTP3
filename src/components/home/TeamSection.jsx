@@ -5,16 +5,14 @@ const teamMembers = [
     id: "german",
     name: "Germán",
     role: "Full Stack Developer",
-    image:
-      "/ger/german_perfil.png",
+    image: "/ger/german_perfil.png",
     description: "Experto en Python, Pascal e IA",
   },
   {
     id: "juan",
     name: "Juan",
     role: "Full Stack Developer",
-    image:
-      "/juan/juan.png",
+    image: "/juan/juan.png",
     description: "Desarrollador versátil y creativo",
   },
   {
@@ -28,8 +26,7 @@ const teamMembers = [
     id: "nicolas",
     name: "Nicolás",
     role: "Project Manager",
-    image:
-      "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=400&h=400&fit=crop",
+    image: "/nicolas/nicolas-perfil.png",
     description: "Líder y organizador del equipo",
   },
 ];
