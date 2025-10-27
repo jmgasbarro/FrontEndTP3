@@ -1,0 +1,7 @@
+/* Simplified index.css - removed conflicting styles, keeping only essential base styles */
+@import "./styles/global.css";
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}

@@ -1,0 +1,200 @@
+[
+  {
+    "id": 1,
+    "name": "Deadpool",
+    "realName": "Wade Wilson",
+    "powers": ["Regeneración", "Inmortalidad", "Experto en armas"],
+    "universe": "Marvel",
+    "image": "https://www.shutterstock.com/editorial/image-editorial/N3T8E83fM0j8A129NzY5OA==/'deadpool'-film---ryan-reynolds-440nw-5140784a.jpg",
+    "description": "Mercenario con factor de curación y sentido del humor retorcido"
+  },
+  {
+    "id": 2,
+    "name": "Joker",
+    "realName": "Desconocido",
+    "powers": ["Genio criminal", "Manipulación", "Caos"],
+    "universe": "DC",
+    "image": "https://i.pinimg.com/236x/ce/05/cb/ce05cbad38cd1bc667b890b3f44fb0ee.jpg",
+    "description": "El príncipe del crimen de Gotham City"
+  },
+  {
+    "id": 3,
+    "name": "Venom",
+    "realName": "Eddie Brock",
+    "powers": ["Fuerza sobrehumana", "Simbiosis", "Cambio de forma"],
+    "universe": "Marvel",
+    "image": "https://wallpapers.com/images/hd/venom-pictures-u1uqhowka7lhg334.jpg",
+    "description": "Simbionte alienígena con sed de justicia violenta"
+  },
+  {
+    "id": 4,
+    "name": "Harley Quinn",
+    "realName": "Harleen Quinzel",
+    "powers": ["Acrobacia", "Inmunidad a toxinas", "Combate"],
+    "universe": "DC",
+    "image": "https://alfabetajuega.com/hero/2025/08/dc-muestra-el-peor-dia-en-la-vida-de-harley-quinn.jpg?width=768&aspect_ratio=16:9&format=nowebp",
+    "description": "Ex psiquiatra convertida en criminal caótica"
+  },
+  {
+    "id": 5,
+    "name": "Punisher",
+    "realName": "Frank Castle",
+    "powers": ["Experto en combate", "Tácticas militares", "Arsenal"],
+    "universe": "Marvel",
+    "image": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2022/03/punisher-2645307.jpg?tf=3840x",
+    "description": "Vigilante que busca venganza contra el crimen"
+  },
+  {
+    "id": 6,
+    "name": "Catwoman",
+    "realName": "Selina Kyle",
+    "powers": ["Agilidad felina", "Sigilo", "Experta ladrona"],
+    "universe": "DC",
+    "image": "https://alfabetajuega.com/hero/2022/03/Descubre-como-se-veian-los-primeros-disenos-de-Catwoman-para-los-comics-de-Batman.jpg?width=1200&aspect_ratio=16:9",
+    "description": "Ladrona maestra con código moral ambiguo"
+  },
+  {
+    "id": 7,
+    "name": "Loki",
+    "realName": "Loki Laufeyson",
+    "powers": ["Magia", "Ilusiones", "Cambio de forma"],
+    "universe": "Marvel",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu7g5oo6DnWcnClMMtT4EfQoGBn20LF9K0Jw&s",
+    "description": "Dios de las travesuras y el engaño"
+  },
+  {
+    "id": 8,
+    "name": "Rorschach",
+    "realName": "Walter Kovacs",
+    "powers": ["Detective", "Combate cuerpo a cuerpo", "Determinación"],
+    "universe": "DC/Watchmen",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9RtfVDu0J56v-YrnQHGKuQ6U6arsZUi_X_A&s",
+    "description": "Vigilante sin compromiso con la justicia absoluta"
+  },
+  {
+    "id": 9,
+    "name": "Magneto",
+    "realName": "Erik Lehnsherr",
+    "powers": ["Control magnético", "Vuelo", "Manipulación de metales"],
+    "universe": "Marvel",
+    "image": "https://i.pinimg.com/736x/90/59/c7/9059c7ca9f236069226a13c8bbac870f.jpg",
+    "description": "Mutante que lucha por la supremacía de su especie"
+  },
+  {
+    "id": 10,
+    "name": "Red Hood",
+    "realName": "Jason Todd",
+    "powers": ["Combate experto", "Tácticas", "Arsenal"],
+    "universe": "DC",
+    "image": "https://preview.redd.it/hot-take-red-hoods-name-and-style-dont-make-sense-v0-takqyin8wa7c1.jpeg?auto=webp&s=8d870d40608e31dfdcc6594f021f72be9b81dd42",
+    "description": "Ex Robin que adoptó métodos más letales"
+  },
+  {
+    "id": 11,
+    "name": "Winter Soldier",
+    "realName": "Bucky Barnes",
+    "powers": ["Brazo biónico", "Combate", "Asesino entrenado"],
+    "universe": "Marvel",
+    "image": "https://i.pinimg.com/736x/16/e9/44/16e9449c2564b567916a090721a249b8.jpg",
+    "description": "Soldado mejorado con pasado oscuro"
+  },
+  {
+    "id": 12,
+    "name": "Poison Ivy",
+    "realName": "Pamela Isley",
+    "powers": ["Control de plantas", "Toxinas", "Inmunidad"],
+    "universe": "DC",
+    "image": "https://imgcdn.stablediffusionweb.com/2024/8/19/3fdab78f-5374-4086-a8ee-2c5c860a1c2c.jpg",
+    "description": "Eco-terrorista con poderes botánicos"
+  },
+  {
+    "id": 13,
+    "name": "Blade",
+    "realName": "Eric Brooks",
+    "powers": ["Cazador de vampiros", "Fuerza sobrehumana", "Inmortalidad"],
+    "universe": "Marvel",
+    "image": "https://blacknerdproblems.com/wp-content/uploads/2020/02/Comic-Vampires-Blade.jpg",
+    "description": "Mitad vampiro, mitad humano, cazador completo"
+  },
+  {
+    "id": 14,
+    "name": "Deathstroke",
+    "realName": "Slade Wilson",
+    "powers": ["Fuerza mejorada", "Regeneración", "Táctico genio"],
+    "universe": "DC",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXqSo5hZcV1Xr741sUPvD5631u1woJpGBw1w&s",
+    "description": "Mercenario mejorado genéticamente"
+  },
+  {
+    "id": 15,
+    "name": "Ghost Rider",
+    "realName": "Johnny Blaze",
+    "powers": ["Fuego infernal", "Cadena mística", "Mirada penitente"],
+    "universe": "Marvel",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZz_VP9RndRXiRWi5Quj__sEACjOFSGcXhA&s",
+    "description": "Espíritu de venganza con calavera en llamas"
+  },
+  {
+    "id": 16,
+    "name": "Black Adam",
+    "realName": "Teth-Adam",
+    "powers": ["Fuerza de dioses", "Vuelo", "Magia"],
+    "universe": "DC",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxeq_QQacqFCoCkYDluJWoDvYs7vmJyFFdwg&s",
+    "description": "Antiguo campeón con métodos brutales"
+  },
+  {
+    "id": 17,
+    "name": "Mystique",
+    "realName": "Raven Darkhölme",
+    "powers": ["Cambio de forma", "Longevidad", "Combate"],
+    "universe": "Marvel",
+    "image": "https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2022/03/mystique-cosplay.jpg",
+    "description": "Mutante metamorfa con agenda propia"
+  },
+  {
+    "id": 18,
+    "name": "Spawn",
+    "realName": "Al Simmons",
+    "powers": ["Necroplasma", "Teletransporte", "Cadenas infernales"],
+    "universe": "Image",
+    "image": "https://preview.redd.it/spawn-what-did-you-think-of-this-one-v0-zi3ri3x21bqd1.jpg?width=350&format=pjpg&auto=webp&s=405314e947a41dc2b4b40f2ed4745574eedabb29",
+    "description": "Soldado resucitado como demonio del infierno"
+  },
+  {
+    "id": 19,
+    "name": "Scarlet Witch",
+    "realName": "Wanda Maximoff",
+    "powers": ["Magia del caos", "Alteración de realidad", "Telequinesis"],
+    "universe": "Marvel",
+    "image": "https://www.hollywoodreporter.com/wp-content/uploads/2015/04/scarlet_witch.jpg?w=1440&h=810&crop=1",
+    "description": "Bruja con poderes que alteran la realidad"
+  },
+  {
+    "id": 20,
+    "name": "Lobo",
+    "realName": "Lobo",
+    "powers": ["Inmortalidad", "Fuerza sobrehumana", "Regeneración"],
+    "universe": "DC",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4pCxRG5gFsp1gAm3461-Xo-uOpqe-3LHLPQ&s",
+    "description": "Cazarrecompensas intergaláctico indestructible"
+  },
+  {
+    "id": 21,
+    "name": "Carnage",
+    "realName": "Cletus Kasady",
+    "powers": ["Simbionte", "Fuerza sobrehumana", "Armas orgánicas"],
+    "universe": "Marvel",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnF0LezTcqziduKodHai8CqqjJF5KypCeVdQ&s",
+    "description": "Simbionte psicópata sediento de sangre"
+  },
+  {
+    "id": 22,
+    "name": "Bane",
+    "realName": "Desconocido",
+    "powers": ["Fuerza mejorada por Venom", "Intelecto", "Tácticas"],
+    "universe": "DC",
+    "image": "https://media.timeout.com/images/106171045/750/562/image.jpg",
+    "description": "El hombre que rompió al murciélago"
+  }
+]
