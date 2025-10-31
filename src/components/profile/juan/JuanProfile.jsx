@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useMediaQuery } from "../../../hooks/MediaQuery";
 import { juanData } from "./juanData";
 import { juanStyles as styles } from "./juanStyles";
+import SkillProgressBar from "../../shared/SkillProgressBar";
 
 export default function JuanProfile() {
   const [showMovies, setShowMovies] = useState(false);
@@ -27,7 +28,7 @@ export default function JuanProfile() {
       <section style={styles.header}>
         {/* Imagen de fondo con efecto parallax */}
         <div style={styles.backgroundImage} />
-        
+
         {/* Overlay oscuro para mejorar legibilidad */}
         <div style={styles.overlay} />
 
@@ -53,7 +54,14 @@ export default function JuanProfile() {
             alt={juanData.name}
             style={styles.profileImage}
           />
-          <div style={{ flex: 1, textAlign: isTablet ? "left" : "center", position: "relative", zIndex: 2 }}>
+          <div
+            style={{
+              flex: 1,
+              textAlign: isTablet ? "left" : "center",
+              position: "relative",
+              zIndex: 2,
+            }}
+          >
             <h1 style={styles.name}>{juanData.name}</h1>
             <p style={styles.role}>{juanData.role}</p>
             <p style={styles.location}>{juanData.location}</p>
@@ -76,9 +84,11 @@ export default function JuanProfile() {
             <h2 style={styles.sectionTitle}>Habilidades</h2>
             <div style={styles.skillsContainer}>
               {juanData.skills.map((skill, index) => (
-                <span key={index} style={styles.skillBadge}>
-                  {skill}
-                </span>
+                <SkillProgressBar
+                  key={index}
+                  skill={skill.name}
+                  level={skill.level}
+                />
               ))}
             </div>
           </div>
@@ -87,8 +97,14 @@ export default function JuanProfile() {
 
       {/* Movies, Music and Contact Section */}
       <section style={styles.sections}>
-        <div style={{ margin: "0 auto", display: "flex", flexDirection: "column", gap: "30px" }}>
-          
+        <div
+          style={{
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "30px",
+          }}
+        >
           {/* Movies */}
           <div style={styles.section}>
             <button
@@ -160,13 +176,19 @@ export default function JuanProfile() {
               <ul style={styles.contactList}>
                 <li style={styles.contactItem}>
                   <strong>Teléfono:</strong>{" "}
-                  <a href={`tel:${juanData.contact.phone}`} style={styles.contactLink}>
+                  <a
+                    href={`tel:${juanData.contact.phone}`}
+                    style={styles.contactLink}
+                  >
                     {juanData.contact.phone}
                   </a>
                 </li>
                 <li style={styles.contactItem}>
                   <strong>Email:</strong>{" "}
-                  <a href={`mailto:${juanData.contact.email}`} style={styles.contactLink}>
+                  <a
+                    href={`mailto:${juanData.contact.email}`}
+                    style={styles.contactLink}
+                  >
                     {juanData.contact.email}
                   </a>
                 </li>
@@ -212,7 +234,7 @@ export default function JuanProfile() {
             />
             <h3 style={styles.modalTitle}>{modalData.title}</h3>
             <p style={styles.modalDescription}>{modalData.description}</p>
-            
+
             {modalData.type === "movie" && modalData.trailer && (
               <div style={styles.mediaContainer}>
                 <h4 style={styles.mediaTitle}>Tráiler:</h4>
@@ -227,7 +249,7 @@ export default function JuanProfile() {
                 ></iframe>
               </div>
             )}
-            
+
             {modalData.type === "album" && modalData.playlist && (
               <div style={styles.mediaContainer}>
                 <h4 style={styles.mediaTitle}>Lista de reproducción:</h4>

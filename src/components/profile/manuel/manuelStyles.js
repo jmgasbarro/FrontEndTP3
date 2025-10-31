@@ -65,6 +65,7 @@ export const manuelStyles = {
   skills: {
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "space-evenly",
     gap: "15px",
   },
   skillTag: {
@@ -120,7 +121,7 @@ export const manuelStyles = {
     textDecoration: "none",
     transition: "color 0.3s ease",
   },
-  
+
   // Contenedor de pokebolas
   pokeballsContainer: {
     display: "flex",
@@ -157,7 +158,7 @@ export const manuelStyles = {
     cursor: "pointer",
     boxShadow: "0 4px 15px rgba(255, 0, 0, 0.4)",
   },
-  
+
   socialIconImage: {
     width: "100%",
     height: "100%",

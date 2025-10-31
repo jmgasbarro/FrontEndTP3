@@ -1,6 +1,11 @@
 // src/components/antiheroes/Pagination.jsx
 
-export default function Pagination({ currentPage, totalPages, onPrevPage, onNextPage }) {
+export default function Pagination({
+  currentPage,
+  totalPages,
+  onPrevPage,
+  onNextPage,
+}) {
   return (
     <div style={styles.paginationContainer}>
       <button
@@ -51,6 +56,7 @@ const styles = {
     borderRadius: "8px",
     cursor: "pointer",
     transition: "all 0.3s ease",
+    lineHeight: "1",
     fontFamily: "'Creepster', cursive",
   },
   buttonDisabled: {

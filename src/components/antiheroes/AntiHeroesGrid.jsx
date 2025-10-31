@@ -1,6 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import AntiHeroCard from "./AntiHeroCard";
+import ImageLightbox from "../shared/ImageLightbox";
+import { useTheme } from "../../hooks/useTheme";
 
 export default function AntiHeroesGrid({
   filteredHeroes,
@@ -8,27 +11,34 @@ export default function AntiHeroesGrid({
   setSearchTerm,
   setSelectedUniverse,
 }) {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const { isDark } = useTheme();
+
   return (
     <>
       <div style={styles.stats}>
-        <p style={styles.statsText}>
+        <p style={styles.statsText(isDark)}>
           Mostrando {filteredHeroes.length} de {totalHeroes} antiheroes
         </p>
       </div>
 
       <div style={styles.grid}>
         {filteredHeroes.map((hero) => (
-          <AntiHeroCard key={hero.id} hero={hero} />
+          <AntiHeroCard
+            key={hero.id}
+            hero={hero}
+            onImageClick={setSelectedImage}
+          />
         ))}
       </div>
 
       {filteredHeroes.length === 0 && (
         <div style={styles.noResults}>
-          <p style={styles.noResultsText}>
+          <p style={styles.noResultsText(isDark)}>
             No se encontraron antiheroes con los criterios seleccionados
           </p>
           <button
-            style={styles.resetButton}
+            style={styles.resetButton(isDark)}
             onClick={() => {
               setSearchTerm("");
               setSelectedUniverse("all");
@@ -37,6 +47,13 @@ export default function AntiHeroesGrid({
             Resetear filtros
           </button>
         </div>
+      )}
+
+      {selectedImage && (
+        <ImageLightbox
+          image={selectedImage}
+          onClose={() => setSelectedImage(null)}
+        />
       )}
     </>
   );
@@ -47,11 +64,12 @@ const styles = {
     textAlign: "center",
     marginBottom: "30px",
   },
-  statsText: {
+  statsText: (isDark) => ({
     fontSize: "16px",
-    color: "#888",
+    color: isDark ? "#888" : "#666",
     fontStyle: "italic",
-  },
+    transition: "color 0.3s ease",
+  }),
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
@@ -61,20 +79,23 @@ const styles = {
     textAlign: "center",
     padding: "60px 20px",
   },
-  noResultsText: {
+  noResultsText: (isDark) => ({
     fontSize: "20px",
-    color: "#888",
+    color: isDark ? "#888" : "#666",
     marginBottom: "20px",
-  },
-  resetButton: {
-    background: "linear-gradient(90deg, #8b0000 0%, #b30000 100%)",
+    transition: "color 0.3s ease",
+  }),
+  resetButton: (isDark) => ({
+    background: isDark
+      ? "linear-gradient(90deg, #8b0000 0%, #b30000 100%)"
+      : "linear-gradient(90deg, #d32f2f 0%, #c62828 100%)",
     color: "#fff",
-    border: "2px solid #ff0000",
+    border: isDark ? "2px solid #ff0000" : "2px solid #d32f2f",
     padding: "12px 30px",
     fontSize: "16px",
     borderRadius: "8px",
     cursor: "pointer",
     fontWeight: "600",
     transition: "all 0.3s ease",
-  },
+  }),
 };

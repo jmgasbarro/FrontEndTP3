@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useMediaQuery } from "../../../hooks/MediaQuery";
 import { germanData } from "./germanData";
 import { germanStyles as styles } from "./germanStyles";
+import SkillProgressBar from "../../shared/SkillProgressBar";
 
 export default function GermanProfile() {
   const [showMovies, setShowMovies] = useState(false);
@@ -40,9 +41,11 @@ export default function GermanProfile() {
             <h2 style={styles.sectionTitle}>Habilidades</h2>
             <div style={styles.skills}>
               {germanData.skills.map((skill, index) => (
-                <span key={index} style={styles.skillTag}>
-                  {skill}
-                </span>
+                <SkillProgressBar
+                  key={index}
+                  skill={skill.name}
+                  level={skill.level}
+                />
               ))}
             </div>
           </div>
@@ -51,10 +54,20 @@ export default function GermanProfile() {
 
       {/* Movies & Music */}
       <section style={styles.sections}>
-        <div style={{ margin: "0 auto", display: "flex", flexDirection: "column", gap: "30px" }}>
+        <div
+          style={{
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "30px",
+          }}
+        >
           {/* Películas */}
           <div style={styles.section}>
-            <button style={styles.toggleButton} onClick={() => setShowMovies(!showMovies)}>
+            <button
+              style={styles.toggleButton}
+              onClick={() => setShowMovies(!showMovies)}
+            >
               <span style={styles.buttonText}>Películas Favoritas</span>
               <span style={styles.arrow}>{showMovies ? "▼" : "▶"}</span>
             </button>
@@ -89,7 +102,10 @@ export default function GermanProfile() {
 
           {/* Música */}
           <div style={styles.section}>
-            <button style={styles.toggleButton} onClick={() => setShowMusic(!showMusic)}>
+            <button
+              style={styles.toggleButton}
+              onClick={() => setShowMusic(!showMusic)}
+            >
               <span style={styles.buttonText}>Música Favorita</span>
               <span style={styles.arrow}>{showMusic ? "▼" : "▶"}</span>
             </button>

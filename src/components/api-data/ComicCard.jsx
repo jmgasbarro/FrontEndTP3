@@ -1,6 +1,10 @@
+import { useTheme } from "../../hooks/useTheme";
+
 export default function ComicCard({ comic }) {
+  const { isDark } = useTheme();
+
   return (
-    <div style={styles.card}>
+    <div style={styles.card(isDark)}>
       <div style={styles.cardImageContainer}>
         <img
           src={comic.thumbnail || "/placeholder.svg?height=300&width=200"}
@@ -27,14 +31,19 @@ export default function ComicCard({ comic }) {
 }
 
 const styles = {
-  card: {
-    background: "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)",
-    border: "2px solid #333",
+  card: (isDark) => ({
+    background: isDark
+      ? "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)"
+      : "linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)",
+    border: isDark ? "2px solid #333" : "2px solid #e0e0e0",
     borderRadius: "12px",
     overflow: "hidden",
+    cursor: "pointer",
     transition: "all 0.3s ease",
-    boxShadow: "0 4px 15px rgba(0, 0, 0, 0.3)",
-  },
+    boxShadow: isDark
+      ? "0 4px 15px rgba(0, 0, 0, 0.3)"
+      : "0 4px 15px rgba(0, 0, 0, 0.1)",
+  }),
   cardImageContainer: {
     width: "100%",
     height: "300px",

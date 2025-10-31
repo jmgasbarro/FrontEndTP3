@@ -1,3 +1,4 @@
+import { useTheme } from "../../hooks/useTheme";
 import TeamCard from "./TeamCard";
 
 const teamMembers = [
@@ -32,9 +33,10 @@ const teamMembers = [
 ];
 
 export default function TeamSection() {
+  const { isDark } = useTheme();
   return (
     <section style={styles.team}>
-      <h2 style={styles.teamTitle}>Nuestro Equipo</h2>
+      <h2 style={styles.teamTitle(isDark)}>Nuestro Equipo</h2>
       <p style={styles.teamDescription}>
         Somos estudiantes de Frontend trabajando en el desarrollo de una SPA con
         React. Nuestro objetivo es crear un sitio organizado, responsive y con
@@ -55,14 +57,15 @@ const styles = {
     padding: "60px 40px",
     margin: "0 auto",
   },
-  teamTitle: {
+  teamTitle: (isDark) => ({
     fontSize: "42px",
-    color: "#ff0000",
+    color: isDark ? "#ff0000" : "#d32f2f",
     textAlign: "center",
-    marginBottom: "20px",
+    marginBottom: "15px",
     fontFamily: "Creepster, cursive",
-    textShadow: "0 0 10px #ff0000",
-  },
+    textShadow: isDark ? "0 0 10px #ff0000" : "0 0 10px rgba(211, 47, 47, 0.3)",
+    transition: "color 0.3s ease, text-shadow 0.3s ease",
+  }),
   teamDescription: {
     fontSize: "18px",
     color: "#b0b0b0",
