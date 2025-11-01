@@ -1,20 +1,30 @@
 "use client";
 
-import { useState } from "react";
 import { useMediaQuery } from "../../../hooks/MediaQuery";
+import SkillProgressBar from "../../shared/SkillProgressBar";
 import { manuelData } from "./manuelData";
 import { manuelStyles as styles } from "./manuelStyles";
 import Pokeball from "./Pokeball";
 
 export default function ManuelProfile() {
-  const [showMovies, setShowMovies] = useState(false);
-  const [showMusic, setShowMusic] = useState(false);
   const isTablet = useMediaQuery("(min-width: 768px)");
 
   const socialLinks = [
-    { name: "Facebook", icon: "/manuel/icon-facebook.png", url: "https://www.facebook.com/jmgasbarro" },
-    { name: "Instagram", icon: "/manuel/icon-instagram.png", url: "https://www.instagram.com/jmgasbarro/" },
-    { name: "LinkedIn", icon: "/manuel/icon-linkedin.png", url: "https://www.linkedin.com/in/jmgasbarro/" },
+    {
+      name: "Facebook",
+      icon: "/manuel/icon-facebook.png",
+      url: "https://www.facebook.com/jmgasbarro",
+    },
+    {
+      name: "Instagram",
+      icon: "/manuel/icon-instagram.png",
+      url: "https://www.instagram.com/jmgasbarro/",
+    },
+    {
+      name: "LinkedIn",
+      icon: "/manuel/icon-linkedin.png",
+      url: "https://www.linkedin.com/in/jmgasbarro/",
+    },
   ];
 
   return (
@@ -22,16 +32,10 @@ export default function ManuelProfile() {
       {/* Header Section */}
       <section style={styles.header}>
         {/* Video de fondo */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={styles.headerVideo}
-        >
+        <video autoPlay loop muted playsInline style={styles.headerVideo}>
           <source src="/manuel/manuel_video_header.mp4" type="video/mp4" />
         </video>
-        
+
         {/* Contenido del header */}
         <div style={styles.headerContent(isTablet)}>
           <img
@@ -44,7 +48,7 @@ export default function ManuelProfile() {
             <p style={styles.role}>{manuelData.role}</p>
           </div>
         </div>
-        
+
         {/* Social Media Icons - Responsivos */}
         <div style={styles.socialMediaHeaderContainer(isTablet)}>
           {socialLinks.map((social, index) => (
@@ -56,12 +60,15 @@ export default function ManuelProfile() {
               style={styles.socialIconHeader}
               title={social.name}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(1.15) translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 8px 30px rgba(255, 0, 0, 0.6)";
+                e.currentTarget.style.transform =
+                  "scale(1.15) translateY(-2px)";
+                e.currentTarget.style.boxShadow =
+                  "0 8px 30px rgba(255, 0, 0, 0.6)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "scale(1) translateY(0)";
-                e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 0, 0, 0.4)";
+                e.currentTarget.style.boxShadow =
+                  "0 4px 15px rgba(255, 0, 0, 0.4)";
               }}
             >
               <img
@@ -86,9 +93,11 @@ export default function ManuelProfile() {
             <h2 style={styles.sectionTitle}>Habilidades</h2>
             <div style={styles.skills}>
               {manuelData.skills.map((skill, index) => (
-                <span key={index} style={styles.skillTag}>
-                  {skill}
-                </span>
+                <SkillProgressBar
+                  key={index}
+                  skill={skill.name}
+                  level={skill.level}
+                />
               ))}
             </div>
           </div>
@@ -97,7 +106,14 @@ export default function ManuelProfile() {
 
       {/* Movies and Music Section */}
       <section style={styles.sections}>
-        <div style={{ margin: "0 auto", display: "flex", flexDirection: "column", gap: "30px" }}>
+        <div
+          style={{
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "30px",
+          }}
+        >
           {/* Movies */}
           <div style={styles.section}>
             <h3 style={styles.buttonText}>🎬 Películas Favoritas</h3>

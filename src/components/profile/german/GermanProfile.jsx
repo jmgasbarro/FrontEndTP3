@@ -106,7 +106,10 @@ export default function GermanProfile() {
 
           {/* Películas */}
           <div style={styles.section}>
-            <button style={styles.toggleButton} onClick={() => setShowMovies(!showMovies)}>
+            <button
+              style={styles.toggleButton}
+              onClick={() => setShowMovies(!showMovies)}
+            >
               <span style={styles.buttonText}>Películas Favoritas</span>
               <span style={styles.arrow}>{showMovies ? "▼" : "▶"}</span>
             </button>
@@ -135,7 +138,10 @@ export default function GermanProfile() {
 
           {/* Música */}
           <div style={styles.section}>
-            <button style={styles.toggleButton} onClick={() => setShowMusic(!showMusic)}>
+            <button
+              style={styles.toggleButton}
+              onClick={() => setShowMusic(!showMusic)}
+            >
               <span style={styles.buttonText}>Música Favorita</span>
               <span style={styles.arrow}>{showMusic ? "▼" : "▶"}</span>
             </button>

@@ -1,7 +1,10 @@
-export default function ApiDataHeader({ page }) {
+import { useTheme } from "../../hooks/useTheme";
+
+export default function ApiDataHeader() {
+  const { isDark } = useTheme();
   return (
     <div style={styles.header}>
-      <h1 style={styles.title}>Series de Anti-Héroes</h1>
+      <h1 style={styles.title(isDark)}>Series de Anti-Héroes</h1>
       <p style={styles.subtitle}>
         Datos obtenidos en tiempo real desde la API de TVMaze
       </p>
@@ -14,13 +17,17 @@ const styles = {
     textAlign: "center",
     marginBottom: "50px",
   },
-  title: {
+  title: (isDark) => ({
     fontSize: "48px",
-    color: "#ff0000",
+    color: isDark ? "#ff0000" : "#d32f2f",
+    textAlign: "center",
     marginBottom: "15px",
     fontFamily: "Creepster, cursive",
-    textShadow: "0 0 15px #ff0000, 0 0 30px #8b0000",
-  },
+    textShadow: isDark
+      ? "0 0 15px #ff0000, 0 0 30px #8b0000"
+      : "0 0 10px rgba(211, 47, 47, 0.3)",
+    transition: "color 0.3s ease, text-shadow 0.3s ease",
+  }),
   subtitle: {
     fontSize: "18px",
     color: "#888",

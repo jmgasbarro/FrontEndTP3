@@ -6,14 +6,38 @@ export const nicolasData = {
   image: "/nicolas/nicolas-perfil.png",
   bio: "Soy un apasionado del desarrollo web y la gestión de proyectos. Me encanta trabajar en equipo y crear soluciones innovadoras que marquen la diferencia.",
   skills: [
-    "Python",
-    "Django",
-    "MySQL",
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Análisis de datos",
+    {
+      name: "Python",
+      level: 80,
+    },
+    {
+      name: "Django",
+      level: 60,
+    },
+    {
+      name: "MySQL",
+      level: 80,
+    },
+    {
+      name: "HTML",
+      level: 90,
+    },
+    {
+      name: "CSS",
+      level: 90,
+    },
+    {
+      name: "JavaScript",
+      level: 90,
+    },
+    {
+      name: "React",
+      level: 85,
+    },
+    {
+      name: "Análisis de datos",
+      level: 50,
+    },
   ],
   movies: [
     {

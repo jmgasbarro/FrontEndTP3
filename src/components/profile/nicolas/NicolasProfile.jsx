@@ -5,6 +5,7 @@ import { useMediaQuery } from "../../../hooks/MediaQuery";
 import { nicolasData } from "./nicolasData";
 import { nicolasStyles as styles, nicolasAnimations } from "./nicolasStyles";
 import EstudiantesModal from "./EstudiantesModal/EstudiantesModal";
+import SkillProgressBar from "../../shared/SkillProgressBar";
 
 const getIcon = (type) => {
   switch (type) {
@@ -65,9 +66,11 @@ export default function NicolasProfile() {
             <h2 style={styles.sectionTitle}>Habilidades</h2>
             <div style={styles.skills}>
               {nicolasData.skills.map((skill, index) => (
-                <span key={index} style={styles.skillTag}>
-                  {skill}
-                </span>
+                <SkillProgressBar
+                  key={index}
+                  skill={skill.name}
+                  level={skill.level}
+                />
               ))}
             </div>
           </div>

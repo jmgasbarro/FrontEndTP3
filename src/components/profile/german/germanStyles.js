@@ -65,6 +65,7 @@ export const germanStyles = {
   skills: {
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "space-evenly",
     gap: "15px",
   },
   skillTag: {

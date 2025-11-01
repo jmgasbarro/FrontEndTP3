@@ -106,6 +106,7 @@ export const nicolasStyles = {
   skills: {
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "space-evenly",
     gap: "15px",
   },
   skillTag: {

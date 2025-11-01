@@ -1,11 +1,15 @@
 "use client";
 
+import { useTheme } from "../../hooks/useTheme";
+
 export default function DiagramsTabs({ activeTab, setActiveTab }) {
+  const { isDark } = useTheme();
+
   return (
     <div style={styles.tabs}>
       <button
         style={{
-          ...styles.tab,
+          ...styles.tab(isDark),
           ...(activeTab === "component" ? styles.tabActive : {}),
         }}
         onClick={() => setActiveTab("component")}
@@ -14,7 +18,7 @@ export default function DiagramsTabs({ activeTab, setActiveTab }) {
       </button>
       <button
         style={{
-          ...styles.tab,
+          ...styles.tab(isDark),
           ...(activeTab === "folder" ? styles.tabActive : {}),
         }}
         onClick={() => setActiveTab("folder")}
@@ -33,10 +37,10 @@ const styles = {
     justifyContent: "center",
     flexWrap: "wrap",
   },
-  tab: {
+  tab: (isDark) => ({
     padding: "15px 30px",
     fontSize: "16px",
-    background: "transparent",
+    background: isDark ? "transparent" : "#1a1a1a",
     borderWidth: "2px",
     borderStyle: "solid",
     borderColor: "#8b0000",
@@ -45,7 +49,7 @@ const styles = {
     cursor: "pointer",
     transition: "all 0.3s ease",
     fontWeight: "600",
-  },
+  }),
   tabActive: {
     background: "linear-gradient(90deg, #8b0000 0%, #b30000 100%)",
     borderColor: "#ff0000",
