@@ -1,15 +1,15 @@
-// Datos personalizados del perfil de Germán
+// Datos personalizados del perfil de Germán con niveles para animación de habilidades
 export const germanData = {
   name: "Germán",
   role: "Full Stack Developer",
   image: "/ger/german_perfil.png",
   bio: "Desarrollador Full Stack apasionado por Python, Pascal e Inteligencia Artificial. Me encanta resolver problemas complejos y crear soluciones innovadoras que marquen la diferencia.",
   skills: [
-    "Python",
-    "Pascal",
-    "IA",
-    "Machine Learning",
-    "Backend Development",
+    { name: "Python", level: 90 },
+    { name: "Pascal", level: 75 },
+    { name: "IA", level: 85 },
+    { name: "Machine Learning", level: 80 },
+    { name: "Backend Development", level: 95 },
   ],
   movies: [
     { title: "Volver al futuro", url: "https://www.youtube.com/embed/NZMtvziROC0" },
