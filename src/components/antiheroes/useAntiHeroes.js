@@ -18,7 +18,7 @@ export function useAntiHeroes() {
   const getHeroesPorPagina = () => {
     if (isMobile) return 6; // Móvil: 1 columna x 6 filas
     if (isTablet) return 8; // Tablet: 2 columnas x 4 filas
-    
+
     // Desktop: calcular según el ancho real de la ventana
     const width = window.innerWidth;
     if (width >= 1920) return 15; // Pantallas muy grandes: 5 columnas x 3 filas
@@ -31,15 +31,20 @@ export function useAntiHeroes() {
 
   // Extraer universos únicos
   const universes = useMemo(() => {
-    const uniqueUniverses = [...new Set(antiHeroesData.map(hero => hero.universe))];
+    const uniqueUniverses = [
+      ...new Set(antiHeroesData.map((hero) => hero.universe)),
+    ];
     return ["Todos", ...uniqueUniverses.sort()];
   }, []);
 
   // Filtrar héroes por búsqueda y universo
   const filteredHeroes = useMemo(() => {
-    return antiHeroesData.filter(hero => {
-      const matchesSearch = hero.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesUniverse = selectedUniverse === "Todos" || hero.universe === selectedUniverse;
+    return antiHeroesData.filter((hero) => {
+      const matchesSearch = hero.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      const matchesUniverse =
+        selectedUniverse === "Todos" || hero.universe === selectedUniverse;
       return matchesSearch && matchesUniverse;
     });
   }, [searchTerm, selectedUniverse]);
@@ -62,16 +67,18 @@ export function useAntiHeroes() {
   const handlePrevPage = () => {
     if (page > 1) {
       setPage(page - 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   const handleNextPage = () => {
     if (page < totalPaginas) {
       setPage(page + 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [page]);
 
   return {
     filteredHeroes: heroesMostrados, // 🆕 Ahora devuelve solo los de la página actual

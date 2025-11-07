@@ -4,7 +4,7 @@
 import AntiHeroesHeader from "../../components/antiheroes/AntiHeroesHeader";
 import AntiHeroesControls from "../../components/antiheroes/AntiHeroesControls";
 import AntiHeroesGrid from "../../components/antiheroes/AntiHeroesGrid";
-import Pagination from "../../components/antiheroes/Pagination"; // 🆕 Importar componente de paginación
+import Pagination from "../../components/shared/Pagination";
 import { useAntiHeroes } from "../../components/antiheroes/useAntiHeroes";
 
 export default function AntiHeroesPage() {

@@ -1,6 +1,10 @@
+import { useTheme } from "../../hooks/useTheme";
+
 export default function BitacoraSection({ title, items }) {
+  const { isDark } = useTheme();
+
   return (
-    <div style={styles.section}>
+    <div style={styles.section(isDark)}>
       <h2 style={styles.sectionTitle}>{title}</h2>
       <ul style={styles.list}>
         {items.map((item, index) => (
@@ -14,13 +18,15 @@ export default function BitacoraSection({ title, items }) {
 }
 
 const styles = {
-  section: {
-    background: "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)",
+  section: (isDark) => ({
+    background: isDark
+      ? "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)"
+      : "transparent",
     border: "2px solid #333",
     borderRadius: "12px",
     padding: "30px",
     transition: "all 0.3s ease",
-  },
+  }),
   sectionTitle: {
     fontSize: "28px",
     color: "#ff0000",
@@ -36,7 +42,6 @@ const styles = {
   },
   listItem: {
     fontSize: "16px",
-    color: "#b0b0b0",
     lineHeight: "1.8",
     marginBottom: "12px",
     paddingLeft: "25px",

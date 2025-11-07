@@ -1,22 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "../../hooks/useTheme";
 
 export default function HeroSection() {
+  const { isDark } = useTheme();
   const [showMessage, setShowMessage] = useState(false);
 
   return (
-    <section style={styles.hero}>
+    <section style={styles.hero(isDark)}>
       <div style={styles.heroContent}>
-        <h1 style={styles.heroTitle}>
-          Bienvenidos a <span style={styles.heroHighlight}>Tree Group</span>
+        <h1 style={styles.heroTitle(isDark)}>
+          Bienvenidos a{" "}
+          <span style={styles.heroHighlight(isDark)}>Tree Group</span>
         </h1>
-        <p style={styles.heroSubtitle}>
+        <p style={styles.heroSubtitle(isDark)}>
           Un equipo de desarrolladores con actitud de antiheroes: rompemos las
           reglas para crear soluciones extraordinarias
         </p>
         <button
-          style={styles.heroButton}
+          style={styles.heroButton(isDark)}
           onClick={() => setShowMessage(!showMessage)}
         >
           {showMessage ? "Ocultar mensaje" : "Conoce más sobre nosotros"}
@@ -36,38 +39,42 @@ export default function HeroSection() {
 }
 
 const styles = {
-  hero: {
-    background: "linear-gradient(135deg, #1a0a1a 0%, #2d0a1a 100%)",
+  hero: (isDark) => ({
+    background: isDark
+      ? "linear-gradient(135deg, #1a0a1a 0%, #2d0a1a 100%)"
+      : "linear-gradient(135deg, #7a2f2f    0%, #b84646   100%)",
     padding: "80px clamp(20px, 4vw, 40px) clamp(40px, 8vw, 80px)", // Responsive padding
     textAlign: "center",
     borderBottom: "3px solid #8b0000",
     boxShadow: "0 4px 20px rgba(139, 0, 0, 0.3)",
-  },
+  }),
   heroContent: {
     margin: "0 auto",
     maxWidth: "900px", // Max width for better readability
   },
-  heroTitle: {
+  heroTitle: (isDark) => ({
     fontSize: "clamp(28px, 6vw, 48px)", // Responsive font size
     fontWeight: "700",
-    color: "#e0e0e0",
+    color: isDark ? "#e0e0e0" : "#fff",
     marginBottom: "20px",
     textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
     lineHeight: "1.2",
-  },
-  heroHighlight: {
+  }),
+  heroHighlight: (isDark) => ({
     color: "#ff0000",
     fontFamily: "Creepster, cursive",
-    textShadow: "0 0 10px #ff0000, 0 0 20px #8b0000",
-  },
-  heroSubtitle: {
+    textShadow: isDark ? "0 0 10px #ff0000" : "0 0 5px #ff0000",
+  }),
+  heroSubtitle: (isDark) => ({
     fontSize: "clamp(16px, 3vw, 20px)", // Responsive font size
-    color: "#b0b0b0",
+    color: isDark ? "#e0e0e0" : "#fff",
     marginBottom: "30px",
     lineHeight: "1.6",
-  },
-  heroButton: {
-    background: "linear-gradient(90deg, #8b0000 0%, #b30000 100%)",
+  }),
+  heroButton: (isDark) => ({
+    background: isDark
+      ? "linear-gradient(90deg, #8b0000 0%, #b30000 100%)"
+      : "linear-gradient(90deg, #d32f2f 0%, #c62828 100%)",
     color: "#fff",
     border: "2px solid #ff0000",
     padding: "clamp(12px, 2vw, 15px) clamp(24px, 4vw, 40px)", // Responsive padding
@@ -77,7 +84,7 @@ const styles = {
     transition: "all 0.3s ease",
     fontWeight: "600",
     boxShadow: "0 4px 15px rgba(139, 0, 0, 0.4)",
-  },
+  }),
   message: {
     marginTop: "30px",
     padding: "clamp(15px, 3vw, 20px)", // Responsive padding

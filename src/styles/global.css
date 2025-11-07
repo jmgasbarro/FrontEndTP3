@@ -60,6 +60,10 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+p {
+  color: var(--text-secondary);
+}
+
 /* Remove default list styles */
 ul,
 ol {

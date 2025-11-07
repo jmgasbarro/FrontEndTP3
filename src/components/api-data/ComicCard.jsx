@@ -68,7 +68,6 @@ const styles = {
   },
   cardDescription: {
     fontSize: "14px",
-    color: "#b0b0b0",
     lineHeight: "1.6",
     marginBottom: "15px",
   },
@@ -78,7 +77,6 @@ const styles = {
   },
   cardId: {
     fontSize: "12px",
-    color: "#666",
     fontStyle: "italic",
   },
 };

@@ -54,8 +54,8 @@ export default function TeamSection() {
 
 const styles = {
   team: {
-    padding: "60px 40px",
-    margin: "0 auto",
+    padding: "0 40px",
+    margin: "60px auto",
   },
   teamTitle: (isDark) => ({
     fontSize: "42px",

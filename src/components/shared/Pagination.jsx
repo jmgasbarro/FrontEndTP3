@@ -1,35 +1,37 @@
-// src/components/api-data/Pagination.jsx
+// src/components/shared/Pagination.jsx
 
 export default function Pagination({
-  page,
-  handlePrevPage,
-  handleNextPage,
-  totalPaginas,
+  currentPage,
+  totalPages,
+  onPrevPage,
+  onNextPage,
 }) {
   return (
     <div style={styles.pagination}>
       <button
         style={{
           ...styles.paginationButton,
-          ...(page === 1 && styles.disabledButton),
+          // Deshabilita si currentPage es 1
+          ...(currentPage === 1 && styles.disabledButton),
         }}
-        onClick={handlePrevPage}
-        disabled={page === 1}
+        onClick={onPrevPage}
+        disabled={currentPage === 1}
       >
         ← Anterior
       </button>
 
       <span style={styles.pageIndicator}>
-        Página {page} de {totalPaginas}
+        Página {currentPage} de {totalPages}
       </span>
 
       <button
         style={{
           ...styles.paginationButton,
-          ...(page === totalPaginas && styles.disabledButton),
+          // Deshabilita si currentPage es igual a totalPages
+          ...(currentPage === totalPages && styles.disabledButton),
         }}
-        onClick={handleNextPage}
-        disabled={page === totalPaginas}
+        onClick={onNextPage}
+        disabled={currentPage === totalPages}
       >
         Siguiente →
       </button>

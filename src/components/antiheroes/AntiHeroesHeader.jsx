@@ -32,7 +32,6 @@ const styles = {
   }),
   subtitle: {
     fontSize: "18px",
-    color: "#888",
     fontStyle: "italic",
   },
 };

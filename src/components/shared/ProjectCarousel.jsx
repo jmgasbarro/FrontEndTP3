@@ -114,9 +114,9 @@ export default function ProjectCarousel() {
 
 const styles = {
   carousel: {
-    padding: "60px 20px",
+    padding: "0 20px",
     maxWidth: "1200px",
-    margin: "0 auto",
+    margin: "60px auto",
   },
   title: (isDark) => ({
     fontSize: "42px",

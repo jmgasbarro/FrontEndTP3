@@ -44,7 +44,7 @@ export default function Sidebar({ isOpen, onClose }) {
           >
             <span style={styles.themeIcon}>{isDark ? "☀️" : "🌙"}</span>
             <span style={styles.themeText}>
-              {isDark ? "Modo Claro" : "Modo Oscuro"}
+              Cambiar a {isDark ? "Modo Claro" : "Modo Oscuro"}
             </span>
           </button>
         </div>

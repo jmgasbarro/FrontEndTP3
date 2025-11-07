@@ -3,7 +3,7 @@
 import LoadingSpinner from "./LoadingSpinner";
 import ErrorMessage from "./ErrorMessage";
 import ComicsGrid from "./ComicsGrid";
-import Pagination from "./Pagination";
+import Pagination from "../shared/Pagination";
 
 export default function ApiDataContent({
   comics,
@@ -22,7 +22,7 @@ export default function ApiDataContent({
   if (error) {
     return <ErrorMessage error={error} fetchComics={fetchComics} />;
   }
-  
+
   return (
     <>
       <ComicsGrid comics={comics} />
@@ -30,10 +30,10 @@ export default function ApiDataContent({
       {/* Solo muestra la paginación si hay más de una página */}
       {totalPaginas > 1 && (
         <Pagination
-          page={page}
-          totalPaginas={totalPaginas} // <--- 2. ¡Y AHORA SE LO PASA AL COMPONENTE HIJO!
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
+          currentPage={page}
+          totalPages={totalPaginas}
+          onPrevPage={handlePrevPage}
+          onNextPage={handleNextPage}
         />
       )}
     </>

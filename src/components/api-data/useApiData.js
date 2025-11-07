@@ -5,11 +5,28 @@ import { useState, useEffect } from "react";
 import { useMediaQuery } from "../../hooks/MediaQuery";
 
 const seriesDeAntiheroes = [
-  "The Boys", "The Punisher", "Peacemaker", "Loki", "Moon Knight",
-  "The Umbrella Academy", "Doom Patrol", "Lucifer", "Watchmen",
-  "Harley Quinn", "The Sandman", "Constantine", "Invincible",
-  "Preacher", "Spawn", "Arrow", "Stargirl", "Daredevil",
-  "Iron Fist", "Luke Cage", "Agents of S.H.I.E.L.D.", "MODOK"
+  "The Boys",
+  "The Punisher",
+  "Peacemaker",
+  "Loki",
+  "Moon Knight",
+  "The Umbrella Academy",
+  "Doom Patrol",
+  "Lucifer",
+  "Watchmen",
+  "Harley Quinn",
+  "The Sandman",
+  "Constantine",
+  "Invincible",
+  "Preacher",
+  "Spawn",
+  "Arrow",
+  "Stargirl",
+  "Daredevil",
+  "Iron Fist",
+  "Luke Cage",
+  "Agents of S.H.I.E.L.D.",
+  "MODOK",
 ];
 
 export function useApiData() {
@@ -27,7 +44,7 @@ export function useApiData() {
   const getSeriesPorPagina = () => {
     if (isMobile) return 6; // Móvil: 1 columna x 6 filas
     if (isTablet) return 8; // Tablet: 2 columnas x 4 filas
-    
+
     // Desktop: calcular según el ancho real de la ventana
     const width = window.innerWidth;
     if (width >= 1920) return 15; // Pantallas muy grandes: 5 columnas x 3 filas
@@ -43,21 +60,25 @@ export function useApiData() {
     const fetchTodasLasSeries = async () => {
       try {
         setLoading(true);
-        const promesas = seriesDeAntiheroes.map(nombreSerie => {
-          const url = `https://api.tvmaze.com/singlesearch/shows?q=${encodeURIComponent(nombreSerie)}`;
-          return fetch(url).then(res => {
+        const promesas = seriesDeAntiheroes.map((nombreSerie) => {
+          const url = `https://api.tvmaze.com/singlesearch/shows?q=${encodeURIComponent(
+            nombreSerie
+          )}`;
+          return fetch(url).then((res) => {
             if (!res.ok) return null;
             return res.json();
           });
         });
 
         const resultados = await Promise.all(promesas);
-        const seriesValidas = resultados.filter(show => show !== null);
-        
+        const seriesValidas = resultados.filter((show) => show !== null);
+
         const transformedData = seriesValidas.map((show) => ({
           id: show.id,
           title: show.name,
-          description: show.summary ? show.summary.replace(/<[^>]*>?/gm, '') : "Sinopsis no disponible.",
+          description: show.summary
+            ? show.summary.replace(/<[^>]*>?/gm, "")
+            : "Sinopsis no disponible.",
           thumbnail: show.image?.medium || "",
         }));
 
@@ -91,16 +112,18 @@ export function useApiData() {
   const handlePrevPage = () => {
     if (page > 1) {
       setPage(page - 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   const handleNextPage = () => {
     if (page < totalPaginas) {
       setPage(page + 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [page]);
 
   return {
     comics: seriesMostradas,

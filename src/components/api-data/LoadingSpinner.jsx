@@ -26,6 +26,5 @@ const styles = {
   loadingText: {
     marginTop: "20px",
     fontSize: "18px",
-    color: "#888",
   },
 };

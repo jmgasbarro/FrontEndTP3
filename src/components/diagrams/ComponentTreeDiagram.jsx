@@ -1,18 +1,25 @@
 // src/components/diagrams/ComponentTreeDiagram.jsx
 
+import { useTheme } from "../../hooks/useTheme";
+
 export default function ComponentTreeDiagram() {
+  const { isDark } = useTheme();
+
   return (
-    <div style={styles.diagramContainer}>
-      <h2 style={styles.diagramTitle}>🌲 Árbol de Renderizado (Jerarquía de Componentes)</h2>
+    <div style={styles.diagramContainer(isDark)}>
+      <h2 style={styles.diagramTitle}>
+        🌲 Árbol de Renderizado (Jerarquía de Componentes)
+      </h2>
       <p style={styles.diagramDescription}>
-        Este diagrama muestra la arquitectura completa de nuestra SPA, incluyendo todos los 
-        componentes, sub-componentes y rutas implementadas con React Router DOM.
+        Este diagrama muestra la arquitectura completa de nuestra SPA,
+        incluyendo todos los componentes, sub-componentes y rutas implementadas
+        con React Router DOM.
       </p>
 
       {/* Imagen del diagrama */}
       <div style={styles.imageWrapper}>
-        <img 
-          src="/diagrams/arbol-de-componentes.png" 
+        <img
+          src="/diagrams/arbol-de-componentes.png"
           alt="Diagrama del árbol de componentes de la aplicación"
           style={styles.image}
         />
@@ -23,43 +30,63 @@ export default function ComponentTreeDiagram() {
         <h3 style={styles.legendTitle}>🏷️ Código de Colores</h3>
         <div style={styles.legendGrid}>
           <div style={styles.legendItem}>
-            <div style={styles.colorIndicator}>
-              <span style={{...styles.colorBox, backgroundColor: '#ff6b6b'}}></span>
+            <div style={styles.colorIndicator(isDark)}>
+              <span
+                style={{ ...styles.colorBox, backgroundColor: "#ff6b6b" }}
+              ></span>
               <span>Componente Raíz</span>
             </div>
-            <div style={styles.colorDescription}>App.jsx - Punto de inicio de la aplicación</div>
+            <div style={styles.colorDescription}>
+              App.jsx - Punto de inicio de la aplicación
+            </div>
           </div>
-          
+
           <div style={styles.legendItem}>
-            <div style={styles.colorIndicator}>
-              <span style={{...styles.colorBox, backgroundColor: '#4dabf7'}}></span>
+            <div style={styles.colorIndicator(isDark)}>
+              <span
+                style={{ ...styles.colorBox, backgroundColor: "#4dabf7" }}
+              ></span>
               <span>Router</span>
             </div>
-            <div style={styles.colorDescription}>AppRouter.jsx - Configuración de rutas</div>
+            <div style={styles.colorDescription}>
+              AppRouter.jsx - Configuración de rutas
+            </div>
           </div>
-          
+
           <div style={styles.legendItem}>
-            <div style={styles.colorIndicator}>
-              <span style={{...styles.colorBox, backgroundColor: '#51cf66'}}></span>
+            <div style={styles.colorIndicator(isDark)}>
+              <span
+                style={{ ...styles.colorBox, backgroundColor: "#51cf66" }}
+              ></span>
               <span>Layout y Estructura</span>
             </div>
-            <div style={styles.colorDescription}>Layout, Sidebar, Footer, Outlet - Componentes persistentes</div>
+            <div style={styles.colorDescription}>
+              Layout, Sidebar, Footer, Outlet - Componentes persistentes
+            </div>
           </div>
-          
+
           <div style={styles.legendItem}>
-            <div style={styles.colorIndicator}>
-              <span style={{...styles.colorBox, backgroundColor: '#ffd43b'}}></span>
+            <div style={styles.colorIndicator(isDark)}>
+              <span
+                style={{ ...styles.colorBox, backgroundColor: "#ffd43b" }}
+              ></span>
               <span>Páginas (Rutas)</span>
             </div>
-            <div style={styles.colorDescription}>Componentes asociados a rutas específicas</div>
+            <div style={styles.colorDescription}>
+              Componentes asociados a rutas específicas
+            </div>
           </div>
-          
+
           <div style={styles.legendItem}>
-            <div style={styles.colorIndicator}>
-              <span style={{...styles.colorBox, backgroundColor: '#e0e0e0'}}></span>
+            <div style={styles.colorIndicator(isDark)}>
+              <span
+                style={{ ...styles.colorBox, backgroundColor: "#eee" }}
+              ></span>
               <span>Sub-componentes</span>
             </div>
-            <div style={styles.colorDescription}>Componentes reutilizables (Cards, Headers, Controls)</div>
+            <div style={styles.colorDescription}>
+              Componentes reutilizables (Cards, Headers, Controls)
+            </div>
           </div>
         </div>
       </div>
@@ -69,22 +96,29 @@ export default function ComponentTreeDiagram() {
         <h3 style={styles.notesTitle}>🔧 Descripción Técnica</h3>
         <ul style={styles.notesList}>
           <li>
-            <strong>App.jsx:</strong> Componente raíz que inicializa toda la aplicación React
+            <strong>App.jsx:</strong> Componente raíz que inicializa toda la
+            aplicación React
           </li>
           <li>
-            <strong>AppRouter.jsx:</strong> Maneja el sistema de rutas usando React Router DOM v7
+            <strong>AppRouter.jsx:</strong> Maneja el sistema de rutas usando
+            React Router DOM v7
           </li>
           <li>
-            <strong>Layout.jsx:</strong> Contenedor persistente que mantiene Sidebar y Footer visibles en todas las páginas
+            <strong>Layout.jsx:</strong> Contenedor persistente que mantiene
+            Sidebar y Footer visibles en todas las páginas
           </li>
           <li>
-            <strong>Outlet:</strong> Componente de React Router que actúa como placeholder para las páginas activas
+            <strong>Outlet:</strong> Componente de React Router que actúa como
+            placeholder para las páginas activas
           </li>
           <li>
-            <strong>Rutas Dinámicas:</strong> <code style={styles.inlineCode}>/profile/:id</code> permite perfiles personalizados por miembro
+            <strong>Rutas Dinámicas:</strong>{" "}
+            <code style={styles.inlineCode}>/profile/:id</code> permite perfiles
+            personalizados por miembro
           </li>
           <li>
-            <strong>Componentización:</strong> Cada página se descompone en sub-componentes reutilizables (Headers, Grids, Cards)
+            <strong>Componentización:</strong> Cada página se descompone en
+            sub-componentes reutilizables (Headers, Grids, Cards)
           </li>
         </ul>
       </div>
@@ -100,7 +134,7 @@ export default function ComponentTreeDiagram() {
               Una sola carga inicial, navegación sin recargas de página
             </div>
           </div>
-          
+
           <div style={styles.featureCard}>
             <div style={styles.featureIcon}>🏗️</div>
             <div style={styles.featureTitle}>Layout Persistente</div>
@@ -108,7 +142,7 @@ export default function ComponentTreeDiagram() {
               Sidebar y Footer se mantienen visibles en todas las rutas
             </div>
           </div>
-          
+
           <div style={styles.featureCard}>
             <div style={styles.featureIcon}>🎯</div>
             <div style={styles.featureTitle}>Rutas Paramétricas</div>
@@ -116,7 +150,7 @@ export default function ComponentTreeDiagram() {
               /profile/:id permite perfiles únicos y personalizados
             </div>
           </div>
-          
+
           <div style={styles.featureCard}>
             <div style={styles.featureIcon}>♻️</div>
             <div style={styles.featureTitle}>Componentes Reutilizables</div>
@@ -124,7 +158,7 @@ export default function ComponentTreeDiagram() {
               Cards, Headers y Controls usados múltiples veces
             </div>
           </div>
-          
+
           <div style={styles.featureCard}>
             <div style={styles.featureIcon}>📊</div>
             <div style={styles.featureTitle}>Datos Dinámicos</div>
@@ -132,7 +166,7 @@ export default function ComponentTreeDiagram() {
               JSON local (Anti-Héroes) y API externa (TVMaze)
             </div>
           </div>
-          
+
           <div style={styles.featureCard}>
             <div style={styles.featureIcon}>🎨</div>
             <div style={styles.featureTitle}>Perfiles Personalizados</div>
@@ -147,13 +181,15 @@ export default function ComponentTreeDiagram() {
 }
 
 const styles = {
-  diagramContainer: {
-    background: "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)",
+  diagramContainer: (isDark) => ({
+    background: isDark
+      ? "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)"
+      : "transparent",
     border: "2px solid #333",
     borderRadius: "12px",
     padding: "40px",
     marginBottom: "40px",
-  },
+  }),
   diagramTitle: {
     fontSize: "28px",
     color: "#ff6666",
@@ -163,12 +199,11 @@ const styles = {
   },
   diagramDescription: {
     fontSize: "16px",
-    color: "#b0b0b0",
     marginBottom: "30px",
     lineHeight: "1.6",
     textAlign: "center",
   },
-  
+
   // Image wrapper
   imageWrapper: {
     backgroundColor: "#0a0a0a",
@@ -185,7 +220,7 @@ const styles = {
     borderRadius: "8px",
     border: "1px solid #444",
   },
-  
+
   // Legend
   legend: {
     marginTop: "30px",
@@ -210,14 +245,14 @@ const styles = {
     flexDirection: "column",
     gap: "5px",
   },
-  colorIndicator: {
+  colorIndicator: (isDark) => ({
     display: "flex",
     alignItems: "center",
     gap: "10px",
     fontSize: "14px",
-    color: "#e0e0e0",
+    color: isDark ? "#eee" : "#111",
     fontWeight: "600",
-  },
+  }),
   colorBox: {
     width: "24px",
     height: "24px",
@@ -227,11 +262,10 @@ const styles = {
   },
   colorDescription: {
     fontSize: "12px",
-    color: "#888",
     fontStyle: "italic",
     marginLeft: "34px",
   },
-  
+
   // Technical notes
   technicalNotes: {
     marginTop: "30px",
@@ -248,18 +282,18 @@ const styles = {
   },
   notesList: {
     lineHeight: "2",
-    color: "#b0b0b0",
     fontSize: "14px",
   },
   inlineCode: {
     fontFamily: '"Courier New", monospace',
     color: "#ffd43b",
+    fontWeight: "800",
     backgroundColor: "rgba(255, 212, 59, 0.1)",
     padding: "2px 6px",
     borderRadius: "3px",
     fontSize: "13px",
   },
-  
+
   // Features
   features: {
     marginTop: "30px",
@@ -294,13 +328,12 @@ const styles = {
   },
   featureTitle: {
     fontSize: "15px",
-    color: "#e0e0e0",
+    color: "#eee",
     fontWeight: "600",
     marginBottom: "8px",
   },
   featureDesc: {
     fontSize: "13px",
-    color: "#888",
     lineHeight: "1.5",
   },
 };
