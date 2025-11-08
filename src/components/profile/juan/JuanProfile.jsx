@@ -10,6 +10,7 @@ import SkillProgressBar from "../../shared/SkillProgressBar";
 export default function JuanProfile() {
   const [showMovies, setShowMovies] = useState(false);
   const [showMusic, setShowMusic] = useState(false);
+  const [showProjects, setShowProjects] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const [modalData, setModalData] = useState(null);
   const isTablet = useMediaQuery("(min-width: 768px)");
@@ -133,7 +134,6 @@ export default function JuanProfile() {
               </div>
             )}
           </div>
-
           {/* Music/Albums */}
           <div style={styles.section}>
             <button
@@ -162,7 +162,45 @@ export default function JuanProfile() {
               </div>
             )}
           </div>
-
+          {/* 🆕 INICIO SECCIÓN PROYECTOS */}         {" "}
+          <div style={styles.section}>
+                       {" "}
+            <button
+              style={styles.toggleButton}
+              onClick={() => setShowProjects(!showProjects)}
+            >
+                            <span style={styles.buttonText}>📁 Proyectos</span> 
+                         {" "}
+              <span style={styles.arrow}>{showProjects ? "▼" : "▶"}</span>     
+                   {" "}
+            </button>
+                       {" "}
+            {showProjects && (
+              <div style={styles.gridContainer}>
+                               {" "}
+                {juanData.projects.map((project, index) => (
+                  <div
+                    key={index}
+                    style={styles.card}
+                    onClick={() => openModal(project, "project")} // 🆕 Nuevo 'type'
+                  >
+                                       {" "}
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      style={styles.cardImage}
+                    />
+                                       {" "}
+                    <p style={styles.cardTitle}>{project.title}</p>             
+                       {" "}
+                  </div>
+                ))}
+                             {" "}
+              </div>
+            )}
+                     {" "}
+          </div>
+                    {/* 🆕 FIN SECCIÓN PROYECTOS */}
           {/* Contact */}
           <div style={styles.section}>
             <button
@@ -234,7 +272,6 @@ export default function JuanProfile() {
             />
             <h3 style={styles.modalTitle}>{modalData.title}</h3>
             <p style={styles.modalDescription}>{modalData.description}</p>
-
             {modalData.type === "movie" && modalData.trailer && (
               <div style={styles.mediaContainer}>
                 <h4 style={styles.mediaTitle}>Tráiler:</h4>
@@ -249,7 +286,6 @@ export default function JuanProfile() {
                 ></iframe>
               </div>
             )}
-
             {modalData.type === "album" && modalData.playlist && (
               <div style={styles.mediaContainer}>
                 <h4 style={styles.mediaTitle}>Lista de reproducción:</h4>
@@ -264,6 +300,52 @@ export default function JuanProfile() {
                 ></iframe>
               </div>
             )}
+            {/* 🆕 INICIO BLOQUE PARA PROYECTOS (MODIFICADO) */}
+            {modalData.type === "project" && (
+              <div style={styles.mediaContainer}>
+                
+                {/* Link al Repositorio (si existe) */}
+                {modalData.repoLink && (
+                  <div style={{ marginBottom: "20px" }}> {/* Añadí un margen para separar los links */}
+                    <h4 style={styles.mediaTitle}>Repositorio en GitHub:</h4>
+                    <a
+                      href={modalData.repoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        ...styles.contactLink,
+                        fontSize: "16px",
+                        wordBreak: "break-all",
+                      }}
+                    >
+                      {modalData.repoLink}
+                    </a>
+                  </div>
+                )}
+
+                {/* Link al Despliegue (si existe) */}
+                {modalData.deployLink && (
+                  <div>
+                    <h4 style={styles.mediaTitle}>Ver App Desplegada:</h4>
+                    <a
+                      href={modalData.deployLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        ...styles.contactLink,
+                        fontSize: "16px",
+                        fontWeight: "bold", // Un poco más de énfasis
+                        wordBreak: "break-all",
+                      }}
+                    >
+                      {modalData.deployLink}
+                    </a>
+                  </div>
+                )}
+
+              </div>
+            )}
+            {/* 🆕 FIN BLOQUE PARA PROYECTOS */}
           </div>
         </div>
       )}

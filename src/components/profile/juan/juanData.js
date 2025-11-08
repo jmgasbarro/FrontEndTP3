@@ -12,11 +12,11 @@ export const juanData = {
   skills: [
     {
       name: "JavaScript",
-      level: 100,
+      level: 90,
     },
     {
       name: "React",
-      level: 90,
+      level: 70,
     },
     {
       name: "Java",
@@ -100,6 +100,34 @@ export const juanData = {
       playlist: "https://open.spotify.com/embed/album/17mS71JVgCCYLVdVcG0aUT",
     },
   ],
+
+  // 🆕 INICIO DE LA NUEVA SECCIÓN DE PROYECTOS
+  projects: [
+    {
+      title: "Proyecto 1: App de E-commerce",
+      image: "/juan/ecommerce.png", // Asegúrate de tener esta imagen en tu carpeta 'public/juan'
+      description:
+        "Sitio e-commerce de una tienda de mascotas construido con HTML, CSS y JavaScript puro (vainilla).",
+      repoLink: "https://github.com/juandualibe/E-commerce-CherryM", // Link al repositorio
+      deployLink: "https://cherry-market.netlify.app/"
+    },
+    {
+      title: "Proyecto 2: Blog Personal",
+      image: "/juan/iptv.png",
+      description:
+        "Reproductor de listas IPTV desarrollado para desktop con ElectronJs",
+      repoLink: "https://github.com/juandualibe/Reproductor-iptv-electronjs",
+    },
+    {
+      title: "Proyecto 3: Herramienta de Visualización",
+      image: "/juan/gestor.png",
+      description:
+        "Gestor de cuenta corriente (en desarrollo) con react js, node, express y mongoDB",
+      repoLink: "https://github.com/juandualibe/cherry-market-v2",
+      deployLink: "https://cherry-market-v2.vercel.app/"
+    },
+  ],
+  // 🆕 FIN DE LA NUEVA SECCIÓN DE PROYECTOS
 
   contact: {
     phone: "+54 351 3197708",
