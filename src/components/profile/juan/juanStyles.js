@@ -81,8 +81,12 @@ export const juanStyles = {
     objectFit: "cover",
     border: "4px solid #ff0000",
     boxShadow: "0 0 30px rgba(255, 0, 0, 0.5)",
-    transition: "transform 0.3s ease",
-    cursor: "pointer",
+    transition: "transform 0.3s ease, box-shadow 0.9s ease", 
+    cursor: "pointer",
+  },
+
+  profileImageHover: {
+    boxShadow: "0 0 40px rgba(255, 0, 0, 1), 0 0 70px rgba(255, 0, 0, 0.8)",
   },
 
   name: {
@@ -189,6 +193,11 @@ export const juanStyles = {
     fontSize: "24px",
     color: "#ff0000",
     fontWeight: "700",
+    transition: "text-shadow 0.5s ease", 
+  },
+
+  buttonTextHover: {
+    textShadow: "0 0 10px rgba(255, 0, 0, 1), 0 0 25px rgba(255, 0, 0, 1)", 
   },
 
   arrow: {
@@ -244,6 +253,30 @@ export const juanStyles = {
     textDecoration: "none",
     transition: "color 0.3s ease",
   },
+
+  // 🆕 INICIO - Estilos de Iconos Sociales
+  socialIconsContainer: {
+    display: "flex",
+    justifyContent: "center", // Centramos los iconos
+    gap: "30px", // Espacio entre ellos
+    marginTop: "25px", // Espacio sobre los iconos
+  },
+
+  socialIconLink: {
+    color: "#ff0000", // Tu color rojo
+    width: "40px",     // Tamaño fijo para el icono
+    height: "40px",    // Tamaño fijo para el icono
+    textDecoration: "none",
+    transition: "transform 0.3s ease, color 0.3s ease", // La animación
+    cursor: "pointer",
+  },
+
+  // Estilo que se aplicará en el hover
+  socialIconLinkHover: {
+    transform: "scale(1.2)", // Efecto de escalado
+    color: "#ffffff", // Cambio de color (a blanco)
+  },
+  // 🆕 FIN - Estilos de Iconos Sociales
 
   // Modal
   modal: {
