@@ -154,7 +154,7 @@ export const manuelStyles = {
     background: "linear-gradient(135deg, #1a0a1a 0%, #2d0a1a 100%)",
     border: "3px solid #ff0000",
     padding: "9px",
-    transition: "all 0.3s ease",
+    transition: "all 0.6s ease",
     cursor: "pointer",
     boxShadow: "0 4px 15px rgba(255, 0, 0, 0.4)",
   },

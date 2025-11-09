@@ -5,6 +5,7 @@ import SkillProgressBar from "../../shared/SkillProgressBar";
 import { manuelData } from "./manuelData";
 import { manuelStyles as styles } from "./manuelStyles";
 import Pokeball from "./Pokeball";
+import PokemonGame from "./PokemonGame";
 
 export default function ManuelProfile() {
   const isTablet = useMediaQuery("(min-width: 768px)");
@@ -61,12 +62,12 @@ export default function ManuelProfile() {
               title={social.name}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform =
-                  "scale(1.15) translateY(-2px)";
+                  "scale(1.15) translateY(-2px) rotate(360deg)";
                 e.currentTarget.style.boxShadow =
                   "0 8px 30px rgba(255, 0, 0, 0.6)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1) translateY(0)";
+                e.currentTarget.style.transform = "scale(1) translateY(0) rotate(0deg)";
                 e.currentTarget.style.boxShadow =
                   "0 4px 15px rgba(255, 0, 0, 0.4)";
               }}
@@ -132,6 +133,12 @@ export default function ManuelProfile() {
                 <Pokeball key={index} item={song} type="music" />
               ))}
             </div>
+          </div>
+
+          {/* Pokemon Game */}
+          <div style={styles.section}>
+            <h3 style={styles.buttonText}>🎮 Mini Juego</h3>
+            <PokemonGame />
           </div>
         </div>
       </section>
