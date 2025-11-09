@@ -21,7 +21,7 @@ export default function FolderStructureDiagram() {
           {/* ROOT LEVEL */}
           <div style={styles.folderItem(isDark)}>
             <span style={styles.rootIcon}>🚀</span>
-            <strong style={styles.rootText(isDark)}>frontend-tp-02/</strong>
+            <strong style={styles.rootText(isDark)}>FrontEndTP3-main/</strong>
             <span style={styles.folderNote(isDark)}>Raíz del proyecto</span>
           </div>
 
@@ -31,14 +31,14 @@ export default function FolderStructureDiagram() {
               <span style={styles.folderIcon}>📁</span>
               <strong>public/</strong>
               <span style={styles.folderNote(isDark)}>
-                Archivos estáticos servidos directamente
+                Archivos estáticos servidos directamente por el servidor
               </span>
             </div>
 
             <div style={styles.folderLevel(isDark)}>
               {[
                 "logo.ico",
-                "german/",
+                "ger/",
                 "juan/",
                 "manuel/",
                 "nicolas/",
@@ -73,21 +73,21 @@ export default function FolderStructureDiagram() {
                 <span style={styles.reactIcon}>⚛️</span>
                 <code style={styles.codeImportant(isDark)}>App.jsx</code>
                 <span style={styles.importantNote(isDark)}>
-                  Componente raíz
+                  Componente raíz de la SPA
                 </span>
               </div>
               <div style={styles.fileItem(isDark)}>
                 <span style={styles.reactIcon}>🚀</span>
                 <code style={styles.codeImportant(isDark)}>main.jsx</code>
                 <span style={styles.importantNote(isDark)}>
-                  Punto de entrada
+                  Punto de entrada que monta la app en #root
                 </span>
               </div>
               <div style={styles.fileItem(isDark)}>
                 <span style={styles.cssIcon}>🎨</span>
                 <code style={styles.code(isDark)}>index.css</code>
                 <span style={styles.fileNote(isDark)}>
-                  Estilos iniciales del #root
+                  Estilos iniciales globales del #root
                 </span>
               </div>
 
@@ -96,7 +96,7 @@ export default function FolderStructureDiagram() {
                 <span style={styles.folderIcon}>📁</span>
                 <strong>components/</strong>
                 <span style={styles.folderNote(isDark)}>
-                  Componentes UI reutilizables por funcionalidad
+                  Componentes UI reutilizables organizados por funcionalidad
                 </span>
               </div>
 
@@ -106,7 +106,7 @@ export default function FolderStructureDiagram() {
                   <span style={styles.folderIcon}>📂</span>
                   <strong>api-data/</strong>
                   <span style={styles.fileNote(isDark)}>
-                    Componentes para consumo de API externa
+                    Componentes para consumo de API externa (TVMaze)
                   </span>
                 </div>
 
@@ -116,13 +116,20 @@ export default function FolderStructureDiagram() {
                     "ApiDataContent.jsx",
                     "ComicsGrid.jsx",
                     "ComicCard.jsx",
-                    "Pagination.jsx",
+                    "ErrorMessage.jsx",
+                    "LoadingSpinner.jsx",
+                    "useApiData.js",
                   ].map((file, i) => (
                     <div key={i} style={styles.fileItem(isDark)}>
                       <span style={styles.reactIcon}>⚛️</span>
                       <code style={styles.code(isDark)}>{file}</code>
                       {file === "ComicCard.jsx" && (
                         <span style={styles.apiNote}>TVMaze API</span>
+                      )}
+                      {file === "useApiData.js" && (
+                        <span style={styles.fileNote(isDark)}>
+                          Hook para manejar requests, loading y errores
+                        </span>
                       )}
                     </div>
                   ))}
@@ -133,7 +140,7 @@ export default function FolderStructureDiagram() {
                   <span style={styles.folderIcon}>📂</span>
                   <strong>antiheroes/</strong>
                   <span style={styles.fileNote(isDark)}>
-                    Galería con datos desde JSON local
+                    Galería de antihéroes con datos desde JSON local
                   </span>
                 </div>
                 <div style={styles.folderLevel(isDark)}>
@@ -144,12 +151,18 @@ export default function FolderStructureDiagram() {
                     "UniverseFilter.jsx",
                     "AntiHeroesGrid.jsx",
                     "AntiHeroCard.jsx",
+                    "useAntiHeroes.js",
                   ].map((f, i) => (
                     <div key={i} style={styles.fileItem(isDark)}>
                       <span style={styles.reactIcon}>⚛️</span>
                       <code style={styles.code(isDark)}>{f}</code>
                       {f === "AntiHeroCard.jsx" && (
                         <span style={styles.jsonNote}>JSON Local</span>
+                      )}
+                      {f === "useAntiHeroes.js" && (
+                        <span style={styles.fileNote(isDark)}>
+                          Hook para filtros, orden y paginación local
+                        </span>
                       )}
                     </div>
                   ))}
@@ -164,12 +177,14 @@ export default function FolderStructureDiagram() {
                   </span>
                 </div>
                 <div style={styles.folderLevel(isDark)}>
-                  {["BitacoraHeader.jsx", "BitacoraContent.jsx"].map((f, i) => (
-                    <div key={i} style={styles.fileItem(isDark)}>
-                      <span style={styles.reactIcon}>⚛️</span>
-                      <code style={styles.code(isDark)}>{f}</code>
-                    </div>
-                  ))}
+                  {["BitacoraContent.jsx", "BitacoraSection.jsx"].map(
+                    (f, i) => (
+                      <div key={i} style={styles.fileItem(isDark)}>
+                        <span style={styles.reactIcon}>⚛️</span>
+                        <code style={styles.code(isDark)}>{f}</code>
+                      </div>
+                    )
+                  )}
                 </div>
 
                 {/* DIAGRAMS */}
@@ -177,11 +192,13 @@ export default function FolderStructureDiagram() {
                   <span style={styles.folderIcon}>📂</span>
                   <strong>diagrams/</strong>
                   <span style={styles.fileNote(isDark)}>
-                    Diagramas de arquitectura del proyecto
+                    Diagramas de arquitectura y estructura de la SPA
                   </span>
                 </div>
                 <div style={styles.folderLevel(isDark)}>
                   {[
+                    "DiagramsHeader.jsx",
+                    "DiagramsTabs.jsx",
                     "ComponentTreeDiagram.jsx",
                     "FolderStructureDiagram.jsx",
                   ].map((f, i) => (
@@ -197,7 +214,7 @@ export default function FolderStructureDiagram() {
                   <span style={styles.folderIcon}>📂</span>
                   <strong>home/</strong>
                   <span style={styles.fileNote(isDark)}>
-                    Componentes de la página principal
+                    Componentes de la página principal de la SPA
                   </span>
                 </div>
                 <div style={styles.folderLevel(isDark)}>
@@ -219,7 +236,7 @@ export default function FolderStructureDiagram() {
                   <span style={styles.folderIcon}>📂</span>
                   <strong>navigation/</strong>
                   <span style={styles.fileNote(isDark)}>
-                    Componentes de navegación global
+                    Componentes de navegación global (layout lateral + footer)
                   </span>
                 </div>
                 <div style={styles.folderLevel(isDark)}>
@@ -241,8 +258,159 @@ export default function FolderStructureDiagram() {
                   <span style={styles.folderIcon}>📂</span>
                   <strong>profile/</strong>
                   <span style={styles.folderNote(isDark)}>
-                    Perfiles individuales personalizados por miembro
+                    Perfiles individuales personalizados por miembro del grupo
                   </span>
+                </div>
+
+                <div style={styles.folderLevel(isDark)}>
+                  {/* GERMAN */}
+                  <div>
+                    <div style={styles.folderItem(isDark)}>
+                      <span style={styles.profileIcon}>👤</span>
+                      <strong>german/</strong>
+                      <span style={styles.profileNote}>Perfil de German</span>
+                    </div>
+                    <div style={styles.folderLevel(isDark)}>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.reactIcon}>⚛️</span>
+                        <code style={styles.code(isDark)}>
+                          GermanProfile.jsx
+                        </code>
+                      </div>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.dataIcon}>📊</span>
+                        <code style={styles.code(isDark)}>germanData.js</code>
+                      </div>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.cssIcon}>🎨</span>
+                        <code style={styles.code(isDark)}>germanStyles.js</code>
+                      </div>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.cssIcon}>🎨</span>
+                        <code style={styles.code(isDark)}>
+                          GermanAnimations.css
+                        </code>
+                        <span style={styles.fileNote(isDark)}>
+                          Animaciones CSS específicas del perfil
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* JUAN */}
+                  <div>
+                    <div style={styles.folderItem(isDark)}>
+                      <span style={styles.profileIcon}>👤</span>
+                      <strong>juan/</strong>
+                      <span style={styles.profileNote}>Perfil de Juan</span>
+                    </div>
+                    <div style={styles.folderLevel(isDark)}>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.reactIcon}>⚛️</span>
+                        <code style={styles.code(isDark)}>JuanProfile.jsx</code>
+                      </div>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.dataIcon}>📊</span>
+                        <code style={styles.code(isDark)}>juanData.js</code>
+                      </div>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.cssIcon}>🎨</span>
+                        <code style={styles.code(isDark)}>juanStyles.js</code>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* MANUEL */}
+                  <div>
+                    <div style={styles.folderItem(isDark)}>
+                      <span style={styles.profileIcon}>👤</span>
+                      <strong>manuel/</strong>
+                      <span style={styles.profileNote}>Perfil de Manuel</span>
+                    </div>
+                    <div style={styles.folderLevel(isDark)}>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.reactIcon}>⚛️</span>
+                        <code style={styles.code(isDark)}>
+                          ManuelProfile.jsx
+                        </code>
+                      </div>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.dataIcon}>📊</span>
+                        <code style={styles.code(isDark)}>manuelData.js</code>
+                      </div>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.cssIcon}>🎨</span>
+                        <code style={styles.code(isDark)}>manuelStyles.js</code>
+                      </div>
+                      {/* Pokeball extra */}
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.reactIcon}>⚛️</span>
+                        <code style={styles.code(isDark)}>Pokeball.jsx</code>
+                        <span style={styles.fileNote(isDark)}>
+                          Componente interactivo de la pokebola
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* NICOLAS */}
+                  <div>
+                    <div style={styles.folderItem(isDark)}>
+                      <span style={styles.profileIcon}>👤</span>
+                      <strong>nicolas/</strong>
+                      <span style={styles.profileNote}>Perfil de Nicolas</span>
+                    </div>
+                    <div style={styles.folderLevel(isDark)}>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.reactIcon}>⚛️</span>
+                        <code style={styles.code(isDark)}>
+                          NicolasProfile.jsx
+                        </code>
+                      </div>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.dataIcon}>📊</span>
+                        <code style={styles.code(isDark)}>nicolasData.js</code>
+                      </div>
+                      <div style={styles.fileItem(isDark)}>
+                        <span style={styles.cssIcon}>🎨</span>
+                        <code style={styles.code(isDark)}>
+                          nicolasStyles.js
+                        </code>
+                      </div>
+
+                      {/* EstudiantesModal (carpeta completa) */}
+                      <div style={styles.folderItem(isDark)}>
+                        <span style={styles.folderIcon}>📂</span>
+                        <strong>EstudiantesModal/</strong>
+                        <span style={styles.fileNote(isDark)}>
+                          Componentes del modal de estudiantes
+                        </span>
+                      </div>
+                      <div style={styles.folderLevel(isDark)}>
+                        <div style={styles.fileItem(isDark)}>
+                          <span style={styles.reactIcon}>⚛️</span>
+                          <code style={styles.code(isDark)}>
+                            EstudiantesModal.jsx
+                          </code>
+                        </div>
+                        <div style={styles.fileItem(isDark)}>
+                          <span style={styles.cssIcon}>🎨</span>
+                          <code style={styles.code(isDark)}>
+                            estudiantesModalStyles.js
+                          </code>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* README general de profile */}
+                  <div style={styles.fileItem(isDark)}>
+                    <span style={styles.docIcon}>📄</span>
+                    <code style={styles.code(isDark)}>README.md</code>
+                    <span style={styles.fileNote(isDark)}>
+                      Guía de personalización de perfiles
+                    </span>
+                  </div>
                 </div>
 
                 <div style={styles.folderLevel(isDark)}>
@@ -276,6 +444,28 @@ export default function FolderStructureDiagram() {
                             {person}Styles.js
                           </code>
                         </div>
+                        {person === "german" && (
+                          <div style={styles.fileItem(isDark)}>
+                            <span style={styles.cssIcon}>🎨</span>
+                            <code style={styles.code(isDark)}>
+                              GermanAnimations.css
+                            </code>
+                            <span style={styles.fileNote(isDark)}>
+                              Animaciones CSS específicas del perfil
+                            </span>
+                          </div>
+                        )}
+                        {person === "nicolas" && (
+                          <div style={styles.fileItem(isDark)}>
+                            <span style={styles.reactIcon}>⚛️</span>
+                            <code style={styles.code(isDark)}>
+                              EstudiantesModal/EstudiantesModal.jsx
+                            </code>
+                            <span style={styles.fileNote(isDark)}>
+                              Modal para mostrar estudiantes del curso
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -287,6 +477,29 @@ export default function FolderStructureDiagram() {
                     </span>
                   </div>
                 </div>
+
+                {/* SHARED */}
+                <div style={styles.folderItem(isDark)}>
+                  <span style={styles.folderIcon}>📂</span>
+                  <strong>shared/</strong>
+                  <span style={styles.fileNote(isDark)}>
+                    Componentes reutilizables compartidos entre secciones
+                  </span>
+                </div>
+                <div style={styles.folderLevel(isDark)}>
+                  {[
+                    "ImageLightbox.jsx",
+                    "Pagination.jsx",
+                    "ProjectCarousel.jsx",
+                    "SkillProgressBar.jsx",
+                    "SocialButton.jsx",
+                  ].map((f, i) => (
+                    <div key={i} style={styles.fileItem(isDark)}>
+                      <span style={styles.reactIcon}>⚛️</span>
+                      <code style={styles.code(isDark)}>{f}</code>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* CONTAINERS */}
@@ -294,7 +507,8 @@ export default function FolderStructureDiagram() {
                 <span style={styles.folderIcon}>📁</span>
                 <strong>containers/</strong>
                 <span style={styles.folderNote(isDark)}>
-                  Componentes contenedores de alto nivel
+                  Componentes contenedores de alto nivel que se usan como
+                  páginas
                 </span>
               </div>
               <div style={styles.folderLevel(isDark)}>
@@ -302,7 +516,8 @@ export default function FolderStructureDiagram() {
                   <span style={styles.folderIcon}>📂</span>
                   <strong>pages/</strong>
                   <span style={styles.folderNote(isDark)}>
-                    Componentes que actúan como páginas completas
+                    Componentes que actúan como vistas completas asociadas a
+                    rutas
                   </span>
                 </div>
                 <div style={styles.folderLevel(isDark)}>
@@ -338,14 +553,14 @@ export default function FolderStructureDiagram() {
                     antiheroes.json
                   </code>
                   <span style={styles.importantNote(isDark)}>
-                    Base de datos local (20+ objetos)
+                    Base de datos local (20+ objetos de antihéroes)
                   </span>
                 </div>
                 <div style={styles.fileItem(isDark)}>
                   <span style={styles.dataIcon}>📊</span>
                   <code style={styles.code(isDark)}>navigation.js</code>
                   <span style={styles.fileNote(isDark)}>
-                    Configuración de enlaces del Sidebar
+                    Configuración de enlaces de navegación (Sidebar)
                   </span>
                 </div>
               </div>
@@ -355,17 +570,48 @@ export default function FolderStructureDiagram() {
                 <span style={styles.folderIcon}>📁</span>
                 <strong>hooks/</strong>
                 <span style={styles.folderNote(isDark)}>
-                  Custom Hooks con lógica reutilizable
+                  Custom Hooks con lógica reutilizable transversal
                 </span>
               </div>
               <div style={styles.folderLevel(isDark)}>
                 <div style={styles.fileItem(isDark)}>
                   <span style={styles.hookIcon}>🪝</span>
                   <code style={styles.code(isDark)}>useTheme.js</code>
+                  <span style={styles.fileNote(isDark)}>
+                    Hook para acceder al ThemeContext
+                  </span>
                 </div>
                 <div style={styles.fileItem(isDark)}>
                   <span style={styles.hookIcon}>🪝</span>
                   <code style={styles.code(isDark)}>MediaQuery.js</code>
+                  <span style={styles.fileNote(isDark)}>
+                    Hook para manejar breakpoints de forma declarativa
+                  </span>
+                </div>
+              </div>
+
+              {/* CONTEXTS */}
+              <div style={styles.folderItem(isDark)}>
+                <span style={styles.folderIcon}>📁</span>
+                <strong>contexts/</strong>
+                <span style={styles.folderNote(isDark)}>
+                  Contextos globales de la aplicación
+                </span>
+              </div>
+              <div style={styles.folderLevel(isDark)}>
+                <div style={styles.fileItem(isDark)}>
+                  <span style={styles.hookIcon}>🪝</span>
+                  <code style={styles.code(isDark)}>ThemeContext.jsx</code>
+                  <span style={styles.fileNote(isDark)}>
+                    Proveedor React para el tema (light/dark)
+                  </span>
+                </div>
+                <div style={styles.fileItem(isDark)}>
+                  <span style={styles.dataIcon}>📊</span>
+                  <code style={styles.code(isDark)}>themeContext.js</code>
+                  <span style={styles.fileNote(isDark)}>
+                    Implementación base del contexto de tema
+                  </span>
                 </div>
               </div>
 
@@ -431,16 +677,22 @@ export default function FolderStructureDiagram() {
             </div>
             <div style={styles.folderLevel(isDark)}>
               {[
-                ["package.json", "📦", "Dependencias y scripts"],
+                ["package.json", "📦", "Dependencias y scripts del proyecto"],
+                [
+                  "package-lock.json",
+                  "📦",
+                  "Versión exacta de dependencias instaladas",
+                ],
                 ["vite.config.js", "⚡", "Configuración de Vite"],
                 ["eslint.config.js", "✅", "Reglas de linting"],
+                ["index.html", "🧩", "Plantilla HTML base para #root"],
                 [
                   "vercel.json",
                   "🚀",
                   "Configuración de deployment y rewrites para SPA",
                 ],
                 [".gitignore", "🌿", "Archivos ignorados por Git"],
-                ["README.md", "📖", "Documentación del proyecto"],
+                ["README.md", "📖", "Documentación general del proyecto"],
               ].map(([name, icon, note], i) => (
                 <div key={i} style={styles.fileItem(isDark)}>
                   <span>{icon}</span>
@@ -493,7 +745,7 @@ export default function FolderStructureDiagram() {
           <ul style={styles.featuresList(isDark)}>
             <li>
               <strong>Separación por Funcionalidad:</strong> Cada carpeta agrupa
-              componentes relacionados
+              componentes relacionados (antiheroes, api-data, perfiles, etc.)
             </li>
             <li>
               <strong>Perfiles Independientes:</strong> Cada miembro tiene su
@@ -502,19 +754,27 @@ export default function FolderStructureDiagram() {
             <li>
               <strong>Datos Centralizados:</strong> Carpeta{" "}
               <code style={styles.inlineCode(isDark)}>/data</code> para JSON y
-              configuraciones
+              configuraciones de navegación
             </li>
             <li>
-              <strong>Custom Hooks:</strong> Lógica reutilizable extraída en{" "}
-              <code style={styles.inlineCode(isDark)}>/hooks</code>
+              <strong>Custom Hooks:</strong> Lógica reutilizable extraída a{" "}
+              <code style={styles.inlineCode(isDark)}>/hooks</code> y a los
+              módulos de features (useApiData, useAntiHeroes)
             </li>
             <li>
-              <strong>Componentes vs Páginas:</strong> Clara distinción entre UI
-              reutilizable y contenedores de rutas
+              <strong>Componentes vs Páginas:</strong> Clara distinción entre
+              componentes UI y contenedores de rutas en{" "}
+              <code style={styles.inlineCode(isDark)}>containers/pages</code>
             </li>
             <li>
-              <strong>Estilos Modulares:</strong> CSS-in-JS por componente +
-              estilos globales centralizados
+              <strong>Estilos Modulares:</strong> Estilos por componente
+              (CSS/JS) + estilos globales centralizados en{" "}
+              <code style={styles.inlineCode(isDark)}>/styles</code>
+            </li>
+            <li>
+              <strong>Contextos Globales:</strong>{" "}
+              <code style={styles.inlineCode(isDark)}>/contexts</code> para
+              gestionar tema y otros estados compartidos
             </li>
             <li>
               <strong>Configuración de Deployment:</strong>{" "}

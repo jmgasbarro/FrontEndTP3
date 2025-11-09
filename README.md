@@ -1,91 +1,272 @@
-# Grupo 3 - Proyecto SPA en React (Evolución del TP1)
+# Grupo 3 - Evolución del Proyecto SPA (TP3)
 
 [![React](https://img.shields.io/badge/React-19.1-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.1-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React Router](https://img.shields.io/badge/React_Router-7.9-CA4245?logo=react-router&logoColor=white)](https://reactrouter.com/)
-[![Deploy](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white)](https://frontend-tp-02.vercel.app/)
+[![Deploy](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white)](https://tree-groupg-font-end-tp3.vercel.app/)
 
 ## 📖 Descripción del Proyecto
 
-Este repositorio documenta la evolución de nuestro proyecto del TP1. Hemos migrado el sitio web estático original (HTML, CSS, JS) a una moderna **Single Page Application (SPA)** construida con **React 19** y **Vite 7**.
+Este repositorio corresponde al **Trabajo Práctico N°3** y continúa la evolución del proyecto iniciado en el **TP1** y migrado a SPA en el **TP2**.
 
-La nueva aplicación conserva la esencia del proyecto original —presentar a nuestro equipo y documentar el proceso— pero lo reconstruye sobre una arquitectura de componentes, ofreciendo una experiencia de usuario más fluida, dinámica y moderna.
+En el **TP3** trabajamos sobre la SPA de antihéroes para:
+
+- Implementar **5 mejoras obligatorias** propuestas en la consigna.
+- Añadir una **mejora propia**: un sistema completo de **tema Oscuro/Claro** aplicado a toda la interfaz mediante Context API.
+- Mantener la arquitectura de componentes, la navegación SPA y la organización por funcionalidades que construimos en el TP2.
+
+La aplicación sigue siendo una **SPA en React** que muestra:
+
+- Galería de antihéroes desde **JSON local**.
+- Listado de series desde **API externa (TVMaze)**.
+- Perfiles personalizados por integrante del grupo.
+- Bitácora del proceso y diagramas de arquitectura.
+
+---
 
 ## 🚀 Demo en Vivo
 
-➡️ **[Ver Aplicación Desplegada en Vercel](https://frontend-tp-02.vercel.app/)**
+➡️ **[Ver Aplicación Desplegada en Vercel](https://tree-groupg-font-end-tp3.vercel.app/)**
 
-## 🔄 Evolución Tecnológica: TP1 → TP2
+---
 
-El salto tecnológico del TP1 al TP2 ha sido el núcleo de este trabajo.
+## 🔄 Evolución Tecnológica: TP2 → TP3
 
-| Característica | ⏪ Antes (TP1) | ⏩ Ahora (TP2) |
-| :--- | :--- | :--- |
-| **Arquitectura** | Sitio Multi-Página (MPA) | **Single Page Application (SPA)** |
-| **Librería Principal** | JavaScript "vanilla" | **React 19** |
-| **Build Tool** | N/A | **Vite 7** |
-| **Navegación** | Múltiples archivos `.html` | **React Router DOM 7** |
-| **Estilos** | CSS Global con BEM | **CSS-in-JS** (Estilos por componente) |
-| **Manejo de Datos** | Datos embebidos en HTML | **JSON local + API externa (TVMaze)** |
-| **Developer Experience** | Recarga manual | **HMR instantáneo** |
+En el TP2 ya habíamos realizado la migración de **MPA estática** a **SPA en React**.  
+El foco del TP3 fue **refinar la SPA existente**, mejorando la UX/UI y la experiencia visual.
 
-## ✨ Características Principales
+| Aspecto        | TP2                             | TP3                                                    |
+| :------------- | :------------------------------ | :----------------------------------------------------- |
+| Interfaz       | Componentes con estilos básicos | 🎞️ Animaciones suaves en tarjetas y controles          |
+| Galería        | Grid estático de cartas         | 🖼️ Lightbox interactivo para imágenes                  |
+| Perfiles       | Secciones informativas          | 📊 Barras de progreso animadas para skills             |
+| Redes Sociales | Enlaces simples o inexistentes  | 🔗 Botones de redes sociales animados y reutilizables  |
+| Proyectos      | Listado estático                | 🎠 Carrusel de proyectos responsivo                    |
+| Tema visual    | Un solo tema                    | 🌗 Tema global Oscuro/Claro con Context y localStorage |
 
-- 🔄 **Navegación SPA:** Transiciones instantáneas entre secciones sin recargar la página
-- 🎭 **Galería desde JSON:** Sección de "Anti-Héroes" con 20+ objetos, búsqueda y filtrado en tiempo real
-- 📺 **Consumo de API:** Integración con TVMaze API para mostrar series con paginación del lado del cliente
-- 👤 **Perfiles Dinámicos:** Rutas paramétricas (`/profile/:id`) con diseños 100% personalizados por cada miembro
-- 🎨 **Componentes Reutilizables:** Arquitectura modular con separación de responsabilidades
-- 📱 **Responsive Design:** 3 breakpoints (móvil, tablet, desktop) con custom hooks
-- 📊 **Diagramas de Arquitectura:** Árbol de componentes y estructura de carpetas visualizados
-- 📔 **Bitácora Completa:** Documentación detallada del proceso de desarrollo en equipo
+---
 
-## 📁 Estructura del Proyecto
+## 📋 Mejoras Implementadas (Consigna TP3)
 
-```
-frontend-tp-02/
-├── public/                   # Archivos estáticos
-│   ├── logo.ico              # Favicon
-│   ├── diagrams/             # Diagramas de arquitectura (PNG)
-│   └── [german|juan|manuel|nicolas]/  # Assets por miembro
-│
-├── src/
-│   ├── components/           # Componentes UI organizados por funcionalidad
-│   │   ├── api-data/         # Componentes para consumo de API
-│   │   ├── antiheroes/       # Galería desde JSON local
-│   │   ├── bitacora/         # Documentación del proceso
-│   │   ├── diagrams/         # Diagramas de arquitectura
-│   │   ├── home/             # Página de inicio
-│   │   ├── navigation/       # Sidebar y Footer
-│   │   └── profile/          # Perfiles personalizados por miembro
-│   │       ├── german/       # Perfil de Germán (independiente)
-│   │       ├── juan/         # Perfil de Juan (independiente)
-│   │       ├── manuel/       # Perfil de Manuel (independiente)
-│   │       └── nicolas/      # Perfil de Nicolás (independiente)
-│   │
-│   ├── containers/pages/     # Componentes de página (HomePage, AntiHeroesPage, etc.)
-│   ├── data/                 # Datos estáticos (antiheroes.json + navigation.js)
-│   ├── hooks/                # Custom Hooks (useMediaQuery)
-│   ├── layout/               # Estructura principal de la UI (Layout con Outlet)
-│   ├── router/               # Configuración de rutas (AppRouter)
-│   └── styles/               # Estilos globales (global.css)
-│
-├── App.jsx                   # Componente raíz
-├── main.jsx                  # Punto de entrada
-├── package.json              # Dependencias y scripts
-└── README.md                 # Esta documentación
-```
+A continuación se documentan las **cinco mejoras obligatorias** (según el enunciado del TP3) y **una mejora propia adicional**.  
+Cada mejora incluye descripción, archivos involucrados y capturas de antes/después (según exige la consigna).
+
+> 💡 Las rutas de las imágenes son de ejemplo. Una vez generadas las capturas, se pueden guardar por ejemplo en `public/tp3/` y ajustar la ruta.
+
+---
+
+### 1️⃣ Animaciones Suaves en la Interfaz
+
+**Descripción:**  
+Se añadieron transiciones y animaciones suaves en distintas partes de la UI para hacer la experiencia más fluida y moderna.
+
+**Características:**
+
+- Transiciones en **tarjetas de antihéroes** al hacer hover.
+- Efectos de escala y sombra en las tarjetas de equipo.
+- Animaciones de entrada en secciones clave (ej. en el hero / carrusel).
+- Todas las animaciones se implementan con **CSS puro** (transitions / keyframes).
+
+**Archivos principales:**
+
+- `src/styles/global.css`  
+  ↳ Variables y clases de animación globales.
+- `src/components/antiheroes/AntiHeroCard.jsx`  
+  ↳ Hover y transición en la tarjeta de antihéroe.
+- `src/components/home/TeamCard.jsx`  
+  ↳ Hover y animaciones para el equipo.
+- Otros componentes con pequeños ajustes de transición en botones y controles.
+
+**Capturas:**
+
+- Antes:  
+  `![Antes - Sin animaciones](public/tp3/01-animaciones-antes.jpg)`
+- Después:  
+  `![Después - Animaciones suaves](public/tp3/01-animaciones-despues.jpg)`
+
+---
+
+### 2️⃣ Galería de Imágenes Interactiva con Lightbox
+
+**Descripción:**  
+La galería de antihéroes ahora permite abrir las imágenes en un **lightbox** interactivo con navegación.
+
+**Características:**
+
+- Grid de tarjetas que disparan un **lightbox** al hacer click.
+- Navegación entre imágenes (anterior / siguiente).
+- Cierre con botón de cierre o tecla **ESC**.
+- Efecto de **zoom / fade** al mostrar la imagen.
+- Fondo oscurecido para enfocar la imagen.
+
+**Archivos principales:**
+
+- **Creado:** `src/components/shared/ImageLightbox.jsx`  
+  ↳ Componente reutilizable de lightbox.
+- **Modificado:** `src/components/antiheroes/AntiHeroCard.jsx`  
+  ↳ Integra el lightbox con las imágenes de antihéroes.
+
+**Capturas:**
+
+- Antes:  
+  `![Antes - Sin lightbox](public/tp3/02-lightbox-antes.jpg)`
+- Después:  
+  `![Después - Lightbox activo](public/tp3/02-lightbox-despues.jpg)`
+
+---
+
+### 3️⃣ Barras de Progreso de Habilidades Animadas
+
+**Descripción:**  
+Se agregaron **barras de progreso** para visualizar los niveles de habilidades de forma clara y visual, con animación al cargarse.
+
+**Características:**
+
+- Barras que se llenan con una animación suave.
+- Muestra de porcentaje de habilidad.
+- Diseño responsivo y consistente con la paleta de colores del sitio.
+- Integradas en los perfiles (ej. perfil de Juan).
+
+**Archivos principales:**
+
+- **Creado:** `src/components/shared/SkillProgressBar.jsx`  
+  ↳ Componente genérico de barra de skill.
+- **Utilizado en:** `src/components/profile/juan/JuanProfile.jsx` y otros perfiles.
+  ↳ Ejemplo de uso para mostrar habilidades del desarrollador.
+
+**Capturas:**
+
+- Antes:  
+  `![Antes - Sin barras de skill](public/tp3/03-skills-antes.jpg)`
+- Después:  
+  `![Después - Barras de skill animadas](public/tp3/03-skills-despues.jpg)`
+
+---
+
+### 4️⃣ Botones de Redes Sociales Animados
+
+**Descripción:**  
+Se crearon **botones de redes sociales** con efectos visuales al hover, integrados en perfiles y tarjetas de equipo.
+
+**Características:**
+
+- Iconos para redes como LinkedIn, GitHub, etc.
+- Efectos de **hover**: cambio de color, escala, sombra.
+- Enlaces placeholder o ficticios (según consigna).
+- Componente reutilizable, utilizado en múltiples secciones.
+
+**Archivos principales:**
+
+- **Creado:** `src/components/shared/SocialButton.jsx`  
+  ↳ Botón reutilizable para redes.
+- **Utilizado en:**
+  - `src/components/profile/juan/JuanProfile.jsx` y otros perfiles.
+
+**Capturas:**
+
+- Antes:  
+  `![Antes - Links simples o inexistentes](public/tp3/04-social-antes.jpg)`
+- Después:  
+  `![Después - Botones de redes animados](public/tp3/04-social-despues.jpg)`
+
+---
+
+### 5️⃣ Carrusel de Proyectos Destacados
+
+**Descripción:**  
+Se desarrolló un **carrusel de proyectos** para mostrar trabajos ficticios o reales del equipo, con navegación manual y diseño responsive.
+
+**Características:**
+
+- Navegación con flechas **anterior / siguiente**.
+- Indicadores **dots** para la posición actual.
+- Animación tipo **slide** entre proyectos.
+- Soporte para auto-play (opcional).
+- Componente reutilizable que se integra fácilmente en la Home.
+
+**Archivos principales:**
+
+- **Creado:** `src/components/shared/ProjectCarousel.jsx`  
+  ↳ Componente principal del carrusel.
+- **Integrado en:** `src/containers/pages/HomePage.jsx`  
+  ↳ Muestra el carrusel en la página de inicio.
+
+**Capturas:**
+
+- Antes:  
+  `![Antes - Sin carrusel](public/tp3/05-carousel-antes.jpg)`
+- Después:  
+  `![Después - Carrusel de proyectos](public/tp3/05-carousel-despues.jpg)`
+
+---
+
+## ⭐ Mejora Propia Adicional: Tema Oscuro/Claro Global
+
+Además de las 5 mejoras sugeridas en la consigna, implementamos una **mejora propia** que impacta en toda la SPA:
+
+### 🌗 Sistema de Tema Oscuro/Claro (Nuevo en TP3)
+
+> En el TP3 se incorpora desde cero un sistema completo de **tema global**.
+
+**Características:**
+
+- **Gestión global de tema** mediante `ThemeContext`.
+- **Hook personalizado** `useTheme.js` para consumir el contexto.
+- Persistencia en **localStorage** de la preferencia del usuario.
+- Toggle en el **Sidebar** con diseño de **switch deslizable**, utilizando íconos de `react-icons`.
+- Todos los estilos relevantes (fondos, bordes, colores de texto) ahora dependen de `isDark`.
+
+**Archivos principales:**
+
+- **Creado:**
+
+  - `src/contexts/ThemeContext.jsx`  
+    ↳ Contexto global que provee `isDark` y `toggleTheme`.
+  - `src/hooks/useTheme.js`  
+    ↳ Hook para acceder fácilmente al tema en cualquier componente.
+
+- **Modificados (adaptados al tema):**
+  - `src/components/navigation/Sidebar.jsx`
+  - `src/components/home/HeroSection.jsx`
+  - `src/components/home/TeamSection.jsx`
+  - `src/components/shared/ProjectCarousel.jsx`
+  - `src/components/shared/SocialButton.jsx`
+  - `src/components/shared/Pagination.jsx`
+  - `src/components/antiheroes/AntiHeroesControls.jsx`
+  - `src/components/antiheroes/SearchBar.jsx`
+  - `src/components/antiheroes/UniverseFilter.jsx`
+  - `src/components/bitacora/BitacoraContent.jsx`
+  - `src/components/diagrams/ComponentTreeDiagram.jsx`
+  - `src/components/diagrams/FolderStructureDiagram.jsx`
+  - `src/components/diagrams/DiagramsTabs.jsx`
+  - `src/components/profile/nicolas/NicolasProfile.jsx`
+  - `src/components/profile/nicolas/EstudiantesModal.jsx`
+  - (y otros componentes menores donde se ajustaron colores y fondos)
+
+**Capturas:**
+
+- Tema Claro:  
+  `![Tema Claro](public/tp3/06-theme-light.jpg)`
+- Tema Oscuro:  
+  `![Tema Oscuro](public/tp3/06-theme-dark.jpg)`
+
+---
 
 ## 🛠️ Tecnologías Utilizadas
 
 - **Frontend Framework:** React 19.1
 - **Build Tool:** Vite 7.1 (HMR ultra-rápido)
 - **Routing:** React Router DOM 7.9
-- **Styling:** CSS-in-JS (estilos inline por componente)
+- **Styling:** CSS-in-JS (estilos inline por componente) + `global.css`
+- **Estado Global de Tema:** React Context API (`ThemeContext`)
+- **Persistencia:** `localStorage`
+- **Íconos:** `react-icons`
 - **Linting:** ESLint 9
 - **Deployment:** Vercel
-- **Version Control:** Git & GitHub
+- **Control de Versiones:** Git & GitHub
 - **API Externa:** [TVMaze API](https://www.tvmaze.com/api)
+
+---
 
 ## ⚙️ Instalación y Ejecución
 
@@ -96,137 +277,17 @@ frontend-tp-02/
 
 ### Pasos
 
-1. **Clona el repositorio:**
-   ```bash
-   git clone https://github.com/juandualibe/frontend-tp-02.git
-   ```
-
-2. **Navega a la carpeta del proyecto:**
-   ```bash
-   cd frontend-tp-02
-   ```
-
-3. **Instala las dependencias:**
-   ```bash
-   npm install
-   ```
-
-4. **Inicia el servidor de desarrollo:**
-   ```bash
-   npm run dev
-   ```
-
-   La aplicación estará disponible en [http://localhost:5173](http://localhost:5173)
-
-### Scripts Disponibles
-
 ```bash
-npm run dev      # Inicia el servidor de desarrollo con HMR
-npm run build    # Genera el build de producción optimizado
-npm run preview  # Preview del build de producción localmente
-npm run lint     # Ejecuta ESLint para verificar calidad de código
+# 1. Clonar el repositorio
+git clone https://github.com/jmgasbarro/FrontEndTP3.git
+
+# 2. Entrar al proyecto
+cd FrontEndTP3
+
+# 3. Instalar dependencias
+npm install
+
+# 4. Ejecutar en modo desarrollo
+npm run dev
+# App en: http://localhost:5173
 ```
-
-## 📦 Despliegue
-
-El proyecto está desplegado en **Vercel** con CI/CD automático:
-
-🔗 **[https://frontend-tp-02.vercel.app/](https://frontend-tp-02.vercel.app/)**
-
-Cada push a la rama `main` genera un nuevo deploy automático.
-
-## 👥 Equipo de Desarrollo
-
-| Miembro | Rol | Responsabilidades | Perfil |
-|---------|-----|-------------------|--------|
-| **Germán** | Full Stack Developer | Setup inicial, rutas, API, deploy | [`/profile/german`](https://frontend-tp-02.vercel.app/profile/german) |
-| **Juan** | Full Stack Developer | Sidebar, HomePage, galería JSON, filtros | [`/profile/juan`](https://frontend-tp-02.vercel.app/profile/juan) |
-| **Manuel** | Backend Developer | Estados asíncronos, integración API, optimización | [`/profile/manuel`](https://frontend-tp-02.vercel.app/profile/manuel) |
-| **Nicolás** | Project Manager | Coordinación, Git, diagramas, documentación | [`/profile/nicolas`](https://frontend-tp-02.vercel.app/profile/nicolas) |
-
-## 🎯 Cumplimiento de Consignas del TP2
-
-✅ **Repositorio y Publicación:**
-- Repositorio en GitHub: [juandualibe/frontend-tp-02](https://github.com/juandualibe/frontend-tp-02)
-- Deploy en Vercel: [frontend-tp-02.vercel.app](https://frontend-tp-02.vercel.app/)
-
-✅ **Estructura y Contenidos:**
-1. ✓ Sidebar con logo y menú vertical funcional
-2. ✓ Sección Portada (HomePage)
-3. ✓ Sección Bitácora completa
-4. ✓ Secciones individuales por integrante (4 perfiles personalizados)
-5. ✓ Datos desde JSON local (antiheroes.json con 20+ objetos)
-6. ✓ Datos desde API pública (TVMaze API)
-7. ✓ Árbol de renderizado (diagrama de componentes)
-8. ✓ Diagrama de organización de carpetas
-
-✅ **Requisitos Técnicos:**
-- ✓ React Router implementado
-- ✓ Responsive en 3 breakpoints
-- ✓ Componentización y reutilización
-- ✓ README.md actualizado
-- ✓ Control de versiones con Git
-
-## 📚 Documentación Adicional
-
-- [📊 Diagramas de Arquitectura](https://frontend-tp-02.vercel.app/diagrams) - Ver árbol de componentes y estructura de carpetas
-- [📔 Bitácora del Proyecto](https://frontend-tp-02.vercel.app/bitacora) - Documentación completa del desarrollo
-- [🎭 Galería de Anti-Héroes](https://frontend-tp-02.vercel.app/antiheroes) - Ejemplo de datos desde JSON
-- [📺 Series (API)](https://frontend-tp-02.vercel.app/api-data) - Ejemplo de consumo de API externa
-- [📁 Guía de Perfiles](src/components/profile/README.md) - Cómo personalizar perfiles
-
-## 🤝 Contribución y Personalización
-
-Cada miembro del equipo tiene **total libertad creativa** para personalizar su perfil en la carpeta `src/components/profile/[nombre]/`:
-
-- **`*Profile.jsx`**: Estructura y componentes del perfil
-- **`*Data.js`**: Información personal, habilidades, películas, música
-- **`*Styles.js`**: Colores, tipografías, diseño personalizado
-
-### Ventajas de esta estructura:
-- ✅ Trabajo en paralelo sin conflictos de Git
-- ✅ Independencia total entre perfiles
-- ✅ Fácil mantenimiento y actualización
-- ✅ Creatividad sin límites
-
-## 💡 Aprendizajes Clave
-
-Durante el desarrollo de este proyecto, el equipo aprendió:
-
-- 🧩 **Pensamiento en componentes**: Identificar elementos reutilizables
-- 🔄 **React Router**: Navegación SPA sin recargas de página
-- 📊 **Gestión de estado**: useState, useEffect para datos dinámicos
-- 🌐 **Fetch de APIs**: Manejo de promesas, loading y error states
-- 🎨 **CSS-in-JS**: Estilos encapsulados por componente
-- ⚡ **Vite**: Build tool moderno 10x más rápido que Webpack
-- 🪝 **Custom Hooks**: Lógica reutilizable (ej: useMediaQuery)
-- 🌿 **Git workflow**: Trabajo colaborativo con carpetas independientes
-
-## 📝 Notas del Proyecto
-
-Este proyecto fue desarrollado como parte del **Trabajo Práctico N°2** de la materia Frontend (2025), demostrando:
-
-- ✨ Migración exitosa de aplicación estática (HTML/CSS/JS) a SPA moderna (React)
-- ⚛️ Implementación de arquitectura basada en componentes reutilizables
-- 🌐 Consumo de APIs REST externas con manejo de estados asíncronos
-- 🧭 Sistema de routing completo con React Router DOM
-- 🎯 Buenas prácticas de desarrollo frontend moderno
-- 👥 Trabajo colaborativo en equipo usando Git y GitHub
-
-## 📄 Licencia
-
-Este proyecto es parte de un trabajo académico de la Universidad.
-
----
-
-## 🔗 Enlaces Útiles
-
-- 🌐 [Aplicación en Vivo](https://frontend-tp-02.vercel.app/)
-- 💻 [Repositorio GitHub](https://github.com/juandualibe/frontend-tp-02)
-- 📖 [Documentación de React](https://react.dev/)
-- ⚡ [Documentación de Vite](https://vitejs.dev/)
-- 🧭 [Documentación de React Router](https://reactrouter.com/)
-
----
-
-_Desarrollado con ❤️ por el Grupo 3 (Germán, Juan, Manuel, Nicolás) - 2025_

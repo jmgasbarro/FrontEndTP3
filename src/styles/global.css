@@ -101,12 +101,12 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8b0000;
+  background: var(--accent-secondary);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b30000;
+  background: var(--accent-tertiary);
 }
 
 /* Responsive layout utilities */

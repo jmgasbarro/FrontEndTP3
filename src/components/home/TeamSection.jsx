@@ -68,7 +68,6 @@ const styles = {
   }),
   teamDescription: {
     fontSize: "18px",
-    color: "#b0b0b0",
     textAlign: "center",
     maxWidth: "800px",
     margin: "0 auto 50px",
