@@ -6,6 +6,9 @@ import { nicolasData } from "./nicolasData";
 import { nicolasStyles as styles, nicolasAnimations } from "./nicolasStyles";
 import EstudiantesModal from "./EstudiantesModal/EstudiantesModal";
 import SkillProgressBar from "../../shared/SkillProgressBar";
+import { ImGithub, ImLinkedin } from "react-icons/im";
+import { useTheme } from "../../../hooks/useTheme";
+import SocialButton from "../../shared/SocialButton";
 
 const getIcon = (type) => {
   switch (type) {
@@ -20,6 +23,17 @@ const getIcon = (type) => {
   }
 };
 
+const getSocialIcon = (name) => {
+  switch (name) {
+    case "LinkedIn":
+      return <ImLinkedin />;
+    case "GitHub":
+      return <ImGithub />;
+    default:
+      return "";
+  }
+};
+
 export default function NicolasProfile() {
   const [showMovies, setShowMovies] = useState(false);
   const [showMusic, setShowMusic] = useState(false);
@@ -27,29 +41,48 @@ export default function NicolasProfile() {
   const [hoveredButton, setHoveredButton] = useState(null);
   const [hoveredLink, setHoveredLink] = useState(null);
   const isTablet = useMediaQuery("(min-width: 768px)");
+  const { isDark } = useTheme();
 
   return (
     <div style={{ minHeight: "100vh" }}>
       <style>{nicolasAnimations}</style>
 
       {/* Header Section */}
-      <section style={styles.header}>
+      <section style={styles.header(isDark)}>
         <div style={styles.particlesContainer}>
           {[...Array(20)].map((_, i) => (
-            <div key={i} style={styles.particle(i)} />
+            <div key={i} style={styles.particle(i, isDark)} />
           ))}
         </div>
         <div style={styles.headerContent(isTablet)}>
           <img
             src={nicolasData.image || "/placeholder.svg"}
             alt={nicolasData.name}
-            style={styles.profileImage}
+            style={styles.profileImage(isDark)}
           />
           <div style={{ flex: 1 }}>
-            <h1 style={styles.name}>{nicolasData.name}</h1>
-            <p style={styles.role}>{nicolasData.role}</p>
+            <h1 style={styles.name(isDark)}>{nicolasData.name}</h1>
+            <p style={styles.role(isDark)}>{nicolasData.role}</p>
             <p style={styles.secondaryData}>{nicolasData.location}</p>
             <p style={styles.secondaryData}>{nicolasData.age}</p>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "15px",
+                marginTop: "20px",
+              }}
+            >
+              {nicolasData.socialMedias.map((media, index) => (
+                <SocialButton
+                  key={index}
+                  icon={getSocialIcon(media.name)}
+                  label={media.name}
+                  url={media.url}
+                  color={media.color}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -58,12 +91,12 @@ export default function NicolasProfile() {
       <section style={styles.info}>
         <div style={{ margin: "0 auto" }}>
           <div style={{ marginBottom: "40px" }}>
-            <h2 style={styles.sectionTitle}>Sobre mí</h2>
+            <h2 style={styles.sectionTitle(isDark)}>Sobre mí</h2>
             <p style={styles.bio}>{nicolasData.bio}</p>
           </div>
 
           <div style={{ marginBottom: "40px" }}>
-            <h2 style={styles.sectionTitle}>Habilidades</h2>
+            <h2 style={styles.sectionTitle(isDark)}>Habilidades</h2>
             <div style={styles.skills}>
               {nicolasData.skills.map((skill, index) => (
                 <SkillProgressBar
@@ -88,7 +121,7 @@ export default function NicolasProfile() {
           }}
         >
           {/* Movies */}
-          <div style={styles.section}>
+          <div style={styles.section(isDark)}>
             <button
               style={{
                 ...styles.toggleButton,
@@ -100,15 +133,17 @@ export default function NicolasProfile() {
             >
               <span
                 style={{
-                  ...styles.buttonText,
-                  ...(hoveredButton === "movies" ? styles.buttonTextHover : {}),
+                  ...styles.buttonText(isDark),
+                  ...(hoveredButton === "movies"
+                    ? styles.buttonTextHover(isDark)
+                    : {}),
                 }}
               >
                 Películas y Series Favoritas
               </span>
               <span
                 style={{
-                  ...styles.arrow,
+                  ...styles.arrow(isDark),
                   ...(hoveredButton === "movies" ? styles.arrowHover : {}),
                 }}
               >
@@ -124,9 +159,9 @@ export default function NicolasProfile() {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        ...styles.link,
+                        ...styles.link(isDark),
                         ...(hoveredLink === `movie-${index}`
-                          ? styles.linkHover
+                          ? styles.linkHover(isDark)
                           : {}),
                       }}
                       onMouseEnter={() => setHoveredLink(`movie-${index}`)}
@@ -151,7 +186,7 @@ export default function NicolasProfile() {
           </div>
 
           {/* Music */}
-          <div style={styles.section}>
+          <div style={styles.section(isDark)}>
             <button
               style={{
                 ...styles.toggleButton,
@@ -163,15 +198,17 @@ export default function NicolasProfile() {
             >
               <span
                 style={{
-                  ...styles.buttonText,
-                  ...(hoveredButton === "music" ? styles.buttonTextHover : {}),
+                  ...styles.buttonText(isDark),
+                  ...(hoveredButton === "music"
+                    ? styles.buttonTextHover(isDark)
+                    : {}),
                 }}
               >
                 Música Favorita
               </span>
               <span
                 style={{
-                  ...styles.arrow,
+                  ...styles.arrow(isDark),
                   ...(hoveredButton === "music" ? styles.arrowHover : {}),
                 }}
               >
@@ -187,9 +224,9 @@ export default function NicolasProfile() {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        ...styles.link,
+                        ...styles.link(isDark),
                         ...(hoveredLink === `music-${index}`
-                          ? styles.linkHover
+                          ? styles.linkHover(isDark)
                           : {}),
                       }}
                       onMouseEnter={() => setHoveredLink(`music-${index}`)}
@@ -213,10 +250,11 @@ export default function NicolasProfile() {
             </div>
           </div>
 
-          <div style={styles.section}>
+          {/* Club */}
+          <div style={styles.section(isDark)}>
             <button
               style={{
-                ...styles.clubToggleButton,
+                ...styles.clubToggleButton(isDark),
                 ...(hoveredButton === "club"
                   ? styles.clubToggleButtonHover
                   : {}),
@@ -228,19 +266,19 @@ export default function NicolasProfile() {
               <div style={styles.clubButtonContent}>
                 <span
                   style={{
-                    ...styles.clubButtonText,
+                    ...styles.clubButtonText(isDark),
                     ...(hoveredButton === "club"
-                      ? styles.clubButtonTextHover
+                      ? styles.clubButtonTextHover(isDark)
                       : {}),
                   }}
                 >
                   Club
                 </span>
-                <span style={styles.clubBadge}>Ver Campeonatos</span>
+                <span style={styles.clubBadge(isDark)}>Ver Campeonatos</span>
               </div>
               <span
                 style={{
-                  ...styles.arrow,
+                  ...styles.arrow(isDark),
                   ...(hoveredButton === "club" ? styles.arrowHover : {}),
                 }}
               >
@@ -254,6 +292,7 @@ export default function NicolasProfile() {
       <EstudiantesModal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
+        isDark={isDark}
       />
     </div>
   );

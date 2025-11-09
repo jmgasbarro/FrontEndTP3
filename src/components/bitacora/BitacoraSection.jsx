@@ -5,11 +5,11 @@ export default function BitacoraSection({ title, items }) {
 
   return (
     <div style={styles.section(isDark)}>
-      <h2 style={styles.sectionTitle}>{title}</h2>
+      <h2 style={styles.sectionTitle(isDark)}>{title}</h2>
       <ul style={styles.list}>
         {items.map((item, index) => (
-          <li key={index} style={styles.listItem}>
-            {item}
+          <li key={index} style={styles.listItem(isDark)}>
+            <span style={styles.bullet(isDark)}>▸</span> {item}
           </li>
         ))}
       </ul>
@@ -21,37 +21,37 @@ const styles = {
   section: (isDark) => ({
     background: isDark
       ? "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)"
-      : "transparent",
-    border: "2px solid #333",
+      : "#ffffff",
+    border: isDark ? "2px solid #333" : "2px solid #ccc",
     borderRadius: "12px",
     padding: "30px",
     transition: "all 0.3s ease",
   }),
-  sectionTitle: {
+  sectionTitle: (isDark) => ({
     fontSize: "28px",
-    color: "#ff0000",
+    color: isDark ? "#ff6666" : "#b71c1c",
     marginBottom: "20px",
     fontWeight: "700",
-    borderBottom: "2px solid #8b0000",
+    borderBottom: isDark ? "2px solid #8b0000" : "2px solid #d32f2f",
     paddingBottom: "10px",
-  },
+  }),
   list: {
     listStyle: "none",
     padding: 0,
     margin: 0,
   },
-  listItem: {
+  listItem: (isDark) => ({
     fontSize: "16px",
     lineHeight: "1.8",
     marginBottom: "12px",
-    paddingLeft: "25px",
-    position: "relative",
-    "&::before": {
-      content: '"▸"',
-      position: "absolute",
-      left: 0,
-      color: "#ff0000",
-      fontWeight: "700",
-    },
-  },
+    paddingLeft: "10px",
+    color: isDark ? "#cccccc" : "#333333",
+    display: "flex",
+    alignItems: "start",
+    gap: "8px",
+  }),
+  bullet: (isDark) => ({
+    color: isDark ? "#ff6666" : "#d32f2f",
+    fontWeight: "700",
+  }),
 };

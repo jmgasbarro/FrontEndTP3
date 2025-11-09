@@ -1,10 +1,10 @@
 // Estilos personalizados para el perfil de Nicolás
-// Puedes modificar estos estilos libremente sin afectar a otros perfiles
 
 export const nicolasStyles = {
   // Estilos del Header
-  header: {
-    background: `
+  header: (isDark) => ({
+    background: isDark
+      ? `
       linear-gradient(135deg, rgba(26, 10, 26, 0.95) 0%, rgba(45, 10, 26, 0.95) 100%),
       repeating-linear-gradient(
         45deg,
@@ -20,13 +20,32 @@ export const nicolasStyles = {
         rgba(139, 0, 0, 0.03) 10px,
         rgba(139, 0, 0, 0.03) 20px
       )
+    `
+      : `
+      linear-gradient(135deg, rgba(255, 235, 238, 0.95) 0%, rgba(255, 240, 240, 0.95) 100%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(211, 47, 47, 0.03) 10px,
+        rgba(211, 47, 47, 0.03) 20px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 10px,
+        rgba(211, 47, 47, 0.03) 10px,
+        rgba(211, 47, 47, 0.03) 20px
+      )
     `,
     padding: "60px 40px",
-    borderBottom: "3px solid #8b0000",
+    borderBottom: isDark ? "3px solid #8b0000" : "3px solid #d32f2f",
     position: "relative",
     overflow: "hidden",
-    boxShadow: "inset 0 0 100px rgba(139, 0, 0, 0.2)",
-  },
+    boxShadow: isDark
+      ? "inset 0 0 100px rgba(139, 0, 0, 0.2)"
+      : "inset 0 0 100px rgba(211, 47, 47, 0.1)",
+  }),
   particlesContainer: {
     position: "absolute",
     top: 0,
@@ -36,11 +55,11 @@ export const nicolasStyles = {
     pointerEvents: "none",
     zIndex: 1,
   },
-  particle: (index) => ({
+  particle: (index, isDark) => ({
     position: "absolute",
     width: `${Math.random() * 4 + 2}px`,
     height: `${Math.random() * 4 + 2}px`,
-    background: "#ff0000",
+    background: isDark ? "#ff0000" : "#d32f2f",
     borderRadius: "50%",
     top: `${Math.random() * 100}%`,
     left: `${Math.random() * 100}%`,
@@ -48,7 +67,9 @@ export const nicolasStyles = {
     animation: `float${index % 3} ${
       Math.random() * 10 + 10
     }s infinite ease-in-out`,
-    boxShadow: "0 0 10px rgba(255, 0, 0, 0.5)",
+    boxShadow: isDark
+      ? "0 0 10px rgba(255, 0, 0, 0.5)"
+      : "0 0 10px rgba(211, 47, 47, 0.3)",
   }),
   headerContent: (isTablet) => ({
     margin: "0 auto",
@@ -59,32 +80,35 @@ export const nicolasStyles = {
     position: "relative",
     zIndex: 2,
   }),
-  profileImage: {
+  profileImage: (isDark) => ({
     width: "200px",
     height: "200px",
     borderRadius: "50%",
     objectFit: "cover",
-    border: "4px solid #ff0000",
-    boxShadow: "0 0 30px rgba(255, 0, 0, 0.5)",
-    animation: "pulse 3s infinite ease-in-out",
-  },
-  name: {
+    border: isDark ? "4px solid #ff0000" : "4px solid #d32f2f",
+    boxShadow: isDark
+      ? "0 0 30px rgba(255, 0, 0, 0.5)"
+      : "0 0 30px rgba(211, 47, 47, 0.5)",
+    animation: isDark ? "pulse 3s infinite ease-in-out" : "",
+  }),
+  name: (isDark) => ({
     fontSize: "48px",
-    color: "#ff0000",
+    color: isDark ? "#ff0000" : "#b71c1c", // Color más oscuro para texto en fondo claro
     marginBottom: "10px",
     fontFamily: "Creepster, cursive",
-    textShadow: "0 0 15px #ff0000, 0 0 30px rgba(255, 0, 0, 0.5)",
-    animation: "glow 2s infinite alternate",
-  },
-  role: {
+    textShadow: isDark
+      ? "0 0 15px #ff0000, 0 0 30px rgba(255, 0, 0, 0.5)"
+      : "0 0 10px rgba(211, 47, 47, 0.5)",
+    animation: isDark ? "glow 2s infinite alternate" : "",
+  }),
+  role: (isDark) => ({
     fontSize: "24px",
-    color: "#b0b0b0",
+    color: isDark ? "#b0b0b0" : "#4a4a4a", // var(--text-secondary)
     fontStyle: "italic",
     marginBottom: "5px",
-  },
+  }),
   secondaryData: {
     fontSize: "18px",
-    color: "#888",
     fontStyle: "italic",
   },
 
@@ -92,15 +116,14 @@ export const nicolasStyles = {
   info: {
     margin: "60px 40px",
   },
-  sectionTitle: {
+  sectionTitle: (isDark) => ({
     fontSize: "32px",
-    color: "#ff0000",
+    color: isDark ? "#ff0000" : "#b71c1c",
     marginBottom: "20px",
     fontWeight: "700",
-  },
+  }),
   bio: {
     fontSize: "18px",
-    color: "#b0b0b0",
     lineHeight: "1.8",
   },
   skills: {
@@ -109,27 +132,31 @@ export const nicolasStyles = {
     justifyContent: "space-evenly",
     gap: "15px",
   },
-  skillTag: {
-    background: "linear-gradient(90deg, #8b0000 0%, #b30000 100%)",
-    color: "#fff",
+  skillTag: (isDark) => ({
+    background: isDark
+      ? "linear-gradient(90deg, #8b0000 0%, #b30000 100%)"
+      : "linear-gradient(90deg, #d32f2f 0%, #c62828 100%)",
+    color: "#fff", // El texto blanco funciona en ambos fondos rojos
     padding: "10px 20px",
     borderRadius: "20px",
     fontSize: "16px",
     fontWeight: "600",
-    border: "1px solid #ff0000",
-  },
+    border: isDark ? "1px solid #ff0000" : "1px solid #b71c1c",
+  }),
 
   // Estilos de Sections
   sections: {
     margin: "70px 40px",
   },
-  section: {
-    background: "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)",
-    border: "2px solid #333",
+  section: (isDark) => ({
+    background: isDark
+      ? "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)"
+      : "linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)",
+    border: isDark ? "2px solid #333" : "2px solid #e0e0e0",
     borderRadius: "12px",
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     maxWidth: "1500px",
-  },
+  }),
   toggleButton: {
     display: "flex",
     justifyContent: "space-between",
@@ -143,14 +170,15 @@ export const nicolasStyles = {
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     position: "relative",
   },
-  clubToggleButton: {
+  clubToggleButton: (isDark) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     gap: "5px",
     width: "100%",
-    background:
-      "linear-gradient(135deg, rgba(139, 0, 0, 0.1) 0%, rgba(184, 134, 11, 0.1) 100%)",
+    background: isDark
+      ? "linear-gradient(135deg, rgba(139, 0, 0, 0.1) 0%, rgba(184, 134, 11, 0.1) 100%)"
+      : "linear-gradient(135deg, rgba(211, 47, 47, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%)",
     borderRadius: "8px",
     cursor: "pointer",
     padding: "30px",
@@ -158,8 +186,8 @@ export const nicolasStyles = {
     position: "relative",
     boxShadow:
       "0 0 20px rgba(184, 134, 11, 0.2), inset 0 0 20px rgba(255, 0, 0, 0.1)",
-    animation: "pulse 3s infinite ease-in-out",
-  },
+    animation: isDark ? "pulse 3s infinite ease-in-out" : "",
+  }),
   clubToggleButtonHover: {
     boxShadow:
       "0 0 30px rgba(255, 215, 0, 0.4), inset 0 0 30px rgba(255, 0, 0, 0.2)",
@@ -173,47 +201,55 @@ export const nicolasStyles = {
   clubIcon: {
     fontSize: "28px",
   },
-  clubBadge: {
+  clubBadge: (isDark) => ({
     fontSize: "12px",
-    color: "#b8860b",
-    background: "rgba(255, 215, 0, 0.1)",
+    color: "#b8860b", // El oro se ve bien en ambos
+    background: isDark ? "rgba(255, 215, 0, 0.1)" : "rgba(255, 215, 0, 0.15)",
     padding: "4px 10px",
     borderRadius: "12px",
-    border: "1px solid rgba(184, 134, 11, 0.4)",
+    border: isDark
+      ? "1px solid rgba(184, 134, 11, 0.4)"
+      : "1px solid rgba(184, 134, 11, 0.6)",
     fontWeight: "600",
     textTransform: "uppercase",
     letterSpacing: "1px",
-  },
-  buttonText: {
+  }),
+  buttonText: (isDark) => ({
     fontSize: "24px",
-    color: "#ff0000",
+    color: isDark ? "#ff0000" : "#b71c1c",
     fontWeight: "700",
-    textShadow: "0 0 10px rgba(255, 0, 0, 0.3)",
+    textShadow: isDark
+      ? "0 0 10px rgba(255, 0, 0, 0.3)"
+      : "0 0 10px rgba(211, 47, 47, 0.2)",
     transition: "all 0.3s ease",
     textAlign: "left",
-  },
-  buttonTextHover: {
-    textShadow: "0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.5)",
-    color: "#ff3333",
-  },
-  clubButtonText: {
+  }),
+  buttonTextHover: (isDark) => ({
+    textShadow: isDark
+      ? "0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.5)"
+      : "0 0 20px rgba(211, 47, 47, 0.5), 0 0 30px rgba(211, 47, 47, 0.3)",
+    color: isDark ? "#ff3333" : "#d32f2f",
+  }),
+  clubButtonText: (isDark) => ({
     fontSize: "24px",
-    color: "#ff0000",
+    color: isDark ? "#ff0000" : "#b71c1c",
     fontWeight: "700",
-    textShadow:
-      "0 0 10px rgba(255, 0, 0, 0.3), 0 0 15px rgba(184, 134, 11, 0.2)",
+    textShadow: isDark
+      ? "0 0 10px rgba(255, 0, 0, 0.3), 0 0 15px rgba(184, 134, 11, 0.2)"
+      : "0 0 10px rgba(211, 47, 47, 0.2), 0 0 15px rgba(184, 134, 11, 0.1)",
     transition: "all 0.3s ease",
-  },
-  clubButtonTextHover: {
-    textShadow:
-      "0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.5)",
-    color: "#ff3333",
-  },
-  arrow: {
+  }),
+  clubButtonTextHover: (isDark) => ({
+    textShadow: isDark
+      ? "0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.5)"
+      : "0 0 20px rgba(211, 47, 47, 0.5), 0 0 30px rgba(255, 215, 0, 0.3)",
+    color: isDark ? "#ff3333" : "#d32f2f",
+  }),
+  arrow: (isDark) => ({
     fontSize: "20px",
-    color: "#ff0000",
+    color: isDark ? "#ff0000" : "#d32f2f",
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-  },
+  }),
   arrowHover: {
     transform: "scale(1.3)",
     filter: "drop-shadow(0 0 8px rgba(255, 0, 0, 0.8))",
@@ -230,31 +266,40 @@ export const nicolasStyles = {
   listItem: {
     marginBottom: "12px",
   },
-  link: {
+  link: (isDark) => ({
     display: "block",
     width: "100%",
     fontSize: "18px",
-    color: "#b0b0b0",
+    color: isDark ? "#b0b0b0" : "#4a4a4a",
     textDecoration: "none",
     padding: "16px 20px",
-    background:
-      "linear-gradient(90deg, rgba(139, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0.05) 100%)",
-    border: "1px solid rgba(139, 0, 0, 0.3)",
+    background: isDark
+      ? "linear-gradient(90deg, rgba(139, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0.05) 100%)"
+      : "linear-gradient(90deg, rgba(211, 47, 47, 0.05) 0%, rgba(211, 47, 47, 0.02) 100%)",
+    border: isDark
+      ? "1px solid rgba(139, 0, 0, 0.3)"
+      : "1px solid rgba(211, 47, 47, 0.2)",
     borderRadius: "8px",
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     position: "relative",
     overflow: "hidden",
-  },
-  linkHover: {
-    color: "#ff3333",
-    background:
-      "linear-gradient(90deg, rgba(139, 0, 0, 0.3) 0%, rgba(139, 0, 0, 0.15) 100%)",
-    border: "1px solid rgba(255, 0, 0, 0.6)",
+  }),
+  linkHover: (isDark) => ({
+    color: isDark ? "#ff3333" : "#b71c1c",
+    background: isDark
+      ? "linear-gradient(90deg, rgba(139, 0, 0, 0.3) 0%, rgba(139, 0, 0, 0.15) 100%)"
+      : "linear-gradient(90deg, rgba(211, 47, 47, 0.15) 0%, rgba(211, 47, 47, 0.1) 100%)",
+    border: isDark
+      ? "1px solid rgba(255, 0, 0, 0.6)"
+      : "1px solid rgba(211, 47, 47, 0.5)",
     transform: "translateX(8px)",
-    boxShadow:
-      "0 0 20px rgba(255, 0, 0, 0.3), inset 0 0 20px rgba(255, 0, 0, 0.1)",
-    textShadow: "0 0 10px rgba(255, 0, 0, 0.5)",
-  },
+    boxShadow: isDark
+      ? "0 0 20px rgba(255, 0, 0, 0.3), inset 0 0 20px rgba(255, 0, 0, 0.1)"
+      : "0 0 20px rgba(211, 47, 47, 0.2), inset 0 0 20px rgba(211, 47, 47, 0.05)",
+    textShadow: isDark
+      ? "0 0 10px rgba(255, 0, 0, 0.5)"
+      : "0 0 10px rgba(211, 47, 47, 0.3)",
+  }),
   linkIcon: {
     marginRight: "12px",
     fontSize: "20px",
@@ -307,19 +352,19 @@ export const nicolasAnimations = `
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 15px #ff0000, 0 0 30px rgba(255, 0, 0, 0.5);
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
   }
   to {
-    text-shadow: 0 0 25px #ff0000, 0 0 50px rgba(255, 0, 0, 0.8), 0 0 70px rgba(255, 0, 0, 0.4);
+    text-shadow: 0 0 25px rgba(255, 0, 0, 0.4), 0 0 40px rgba(255, 0, 0, 0.3);
   }
 }
 
 @keyframes pulse {
   0%, 100% {
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.05);
   }
   50% {
-    box-shadow: 0 0 50px rgba(255, 0, 0, 0.8), 0 0 70px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.2), 0 0 60px rgba(255, 0, 0, 0.1);
   }
 }
 `;

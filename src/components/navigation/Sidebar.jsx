@@ -5,9 +5,11 @@ import { navigationLinks, profileLinks } from "../../data/navigation";
 import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from "../../hooks/MediaQuery";
 import { useTheme } from "../../hooks/useTheme";
+import { BsSunFill, BsMoonFill } from "react-icons/bs";
 
 export default function Sidebar({ isOpen, onClose }) {
   const [showProfiles, setShowProfiles] = useState(false);
+  const [hovered, setHovered] = useState(null);
   const { pathname } = useLocation();
   const { isDark, toggleTheme } = useTheme();
 
@@ -39,12 +41,20 @@ export default function Sidebar({ isOpen, onClose }) {
         <div style={styles.themeToggleContainer}>
           <button
             onClick={toggleTheme}
-            style={styles.themeToggle(isDark)}
+            style={styles.toggleTrack(isDark)}
             aria-label="Toggle theme"
+            onMouseEnter={() => setHovered("theme")}
+            onMouseLeave={() => setHovered(null)}
+            role="switch"
+            aria-checked={!isDark}
           >
-            <span style={styles.themeIcon}>{isDark ? "☀️" : "🌙"}</span>
-            <span style={styles.themeText}>
-              Cambiar a {isDark ? "Modo Claro" : "Modo Oscuro"}
+            <span
+              style={{
+                ...styles.toggleKnob(isDark),
+                ...(hovered === "theme" ? styles.toggleKnobHover(isDark) : {}),
+              }}
+            >
+              {isDark ? <BsMoonFill size={25} /> : <BsSunFill size={25} />}
             </span>
           </button>
         </div>
@@ -57,7 +67,12 @@ export default function Sidebar({ isOpen, onClose }) {
               style={{
                 ...styles.navLink(isDark),
                 ...(isActive(link.path) ? styles.navLinkActive(isDark) : {}),
+                ...(hovered === link.path && !isActive(link.path)
+                  ? styles.navLinkHover(isDark)
+                  : {}),
               }}
+              onMouseEnter={() => setHovered(link.path)}
+              onMouseLeave={() => setHovered(null)}
             >
               <span style={styles.navIcon}>{link.icon}</span>
               {link.label}
@@ -66,8 +81,15 @@ export default function Sidebar({ isOpen, onClose }) {
 
           <div style={styles.profilesSection}>
             <button
-              style={styles.profilesToggle(isDark)}
+              style={{
+                ...styles.profilesToggle(isDark),
+                ...(hovered === "profiles"
+                  ? styles.profilesToggleHover(isDark)
+                  : {}),
+              }}
               onClick={() => setShowProfiles(!showProfiles)}
+              onMouseEnter={() => setHovered("profiles")}
+              onMouseLeave={() => setHovered(null)}
             >
               <span style={styles.navIcon}>👥</span>
               Perfiles
@@ -85,7 +107,12 @@ export default function Sidebar({ isOpen, onClose }) {
                       ...(isActive(link.path)
                         ? styles.profileLinkActive(isDark)
                         : {}),
+                      ...(hovered === link.path && !isActive(link.path)
+                        ? styles.profileLinkHover(isDark)
+                        : {}),
                     }}
+                    onMouseEnter={() => setHovered(link.path)}
+                    onMouseLeave={() => setHovered(null)}
                   >
                     <span style={styles.navIcon}>{link.icon}</span>
                     {link.label}
@@ -157,34 +184,51 @@ const styles = {
   themeToggleContainer: {
     padding: "15px 25px",
     borderBottom: "1px solid var(--border-color)",
-  },
-  themeToggle: (isDark) => ({
     display: "flex",
     alignItems: "center",
-    gap: "12px",
-    padding: "12px 15px",
-    width: "100%",
-    background: isDark
-      ? "linear-gradient(90deg, #8b0000 0%, #b30000 100%)"
-      : "linear-gradient(90deg, #d32f2f 0%, #c62828 100%)",
-    color: "#fff",
-    borderRadius: "8px",
+    justifyContent: "center",
+  },
+  themeLabel: (isDark) => ({
     fontSize: "14px",
     fontWeight: "600",
-    border: isDark ? "1px solid #ff0000" : "1px solid #d32f2f",
-    boxShadow: isDark
-      ? "0 0 15px rgba(139, 0, 0, 0.5)"
-      : "0 2px 8px rgba(211, 47, 47, 0.3)",
-    transition: "all 0.3s ease",
-    cursor: "pointer",
+    color: isDark ? "#b0b0b0" : "#4a4a4a",
+    transition: "color 0.3s ease",
   }),
-  themeIcon: {
-    fontSize: "18px",
-  },
-  themeText: {
-    flex: 1,
-    textAlign: "left",
-  },
+  toggleTrack: (isDark) => ({
+    position: "relative",
+    width: "80px",
+    height: "42px",
+    background: isDark ? "#333" : "#ccc",
+    borderRadius: "21px",
+    border: isDark ? "1px solid #555" : "1px solid #bbb",
+    cursor: "pointer",
+    transition: "background 0.3s ease, border-color 0.3s ease",
+  }),
+  toggleKnob: (isDark) => ({
+    position: "absolute",
+    top: "2px",
+    left: "2px",
+    width: "36px",
+    height: "36px",
+    background: isDark
+      ? "linear-gradient(135deg, #8b0000, #b30000)"
+      : "linear-gradient(135deg, #d32f2f, #c62828)",
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "16px", // Tamaño del icono
+    color: "#fff",
+    transition:
+      "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease",
+    boxShadow: "0 1px 3px rgba(0,0,0,0.3)",
+    transform: isDark ? "translateX(37px)" : "translateX(0)",
+  }),
+  toggleKnobHover: (isDark) => ({
+    boxShadow: isDark
+      ? "0 0 15px rgba(255, 0, 0, 0.7)"
+      : "0 0 15px rgba(211, 47, 47, 0.5)",
+  }),
   nav: {
     display: "flex",
     flexDirection: "column",
@@ -202,21 +246,32 @@ const styles = {
     fontSize: "clamp(14px, 2.5vw, 16px)",
     fontWeight: "500",
     borderRadius: "8px",
-    border: "1px solid transparent",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "transparent",
+    transition: "all 0.2s ease-in-out",
   }),
   navLinkActive: (isDark) => ({
     background: isDark
       ? "linear-gradient(90deg, #8b0000 0%, #b30000 100%)"
       : "linear-gradient(90deg, #d32f2f 0%, #c62828 100%)",
     color: "#fff",
-    border: isDark ? "1px solid #ff0000" : "1px solid #d32f2f",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: isDark ? "#ff0000" : "#d32f2f",
     boxShadow: isDark
       ? "0 0 15px rgba(139, 0, 0, 0.5)"
       : "0 2px 8px rgba(211, 47, 47, 0.3)",
   }),
+  navLinkHover: (isDark) => ({
+    background: isDark ? "rgba(139, 0, 0, 0.2)" : "rgba(211, 47, 47, 0.05)",
+    color: isDark ? "#ff6666" : "#b71c1c",
+    borderColor: isDark ? "rgba(139, 0, 0, 0.5)" : "rgba(211, 47, 47, 0.2)",
+  }),
   navIcon: {
     fontSize: "clamp(16px, 3vw, 20px)",
   },
+  profilesSection: {},
   profilesToggle: (isDark) => ({
     display: "flex",
     alignItems: "center",
@@ -226,11 +281,18 @@ const styles = {
     fontSize: "clamp(14px, 2.5vw, 16px)",
     fontWeight: "500",
     background: "transparent",
-    border: "1px solid transparent",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "transparent",
     borderRadius: "8px",
     cursor: "pointer",
     width: "100%",
-    transition: "all 0.3s ease",
+    transition: "all 0.2s ease-in-out",
+  }),
+  profilesToggleHover: (isDark) => ({
+    background: isDark ? "rgba(139, 0, 0, 0.2)" : "rgba(211, 47, 47, 0.05)",
+    color: isDark ? "#ff6666" : "#b71c1c",
+    borderColor: isDark ? "rgba(139, 0, 0, 0.5)" : "rgba(211, 47, 47, 0.2)",
   }),
   arrow: {
     marginLeft: "auto",
@@ -253,12 +315,21 @@ const styles = {
     fontSize: "clamp(12px, 2vw, 14px)",
     fontWeight: "500",
     borderRadius: "6px",
-    transition: "all 0.3s ease",
-    border: "1px solid transparent",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "transparent",
+    transition: "all 0.2s ease-in-out",
   }),
   profileLinkActive: (isDark) => ({
     background: isDark ? "rgba(139, 0, 0, 0.3)" : "rgba(211, 47, 47, 0.1)",
     color: isDark ? "#ff6666" : "#d32f2f",
-    border: isDark ? "1px solid #8b0000" : "1px solid #d32f2f",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: isDark ? "#8b0000" : "#d32f2f",
+  }),
+  profileLinkHover: (isDark) => ({
+    background: isDark ? "rgba(139, 0, 0, 0.15)" : "rgba(211, 47, 47, 0.05)",
+    color: isDark ? "#b0b0b0" : "#4a4a4a",
+    borderColor: isDark ? "rgba(139, 0, 0, 0.3)" : "rgba(211, 47, 47, 0.1)",
   }),
 };

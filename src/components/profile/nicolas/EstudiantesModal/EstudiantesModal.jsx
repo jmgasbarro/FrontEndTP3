@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { estudiantesData } from "../nicolasData";
 import { modalStyles, modalAnimations } from "./estudiantesModalStyles";
 
-export default function EstudiantesModal({ isOpen, onClose }) {
+export default function EstudiantesModal({ isOpen, onClose, isDark }) {
   const [flippedCards, setFlippedCards] = useState(new Set());
   const [hoveredCard, setHoveredCard] = useState(null);
   const [hoveredClose, setHoveredClose] = useState(false);
@@ -44,8 +44,8 @@ export default function EstudiantesModal({ isOpen, onClose }) {
   };
 
   const handleCloseClick = () => {
-    onClose(); // Llama a la función del padre para cerrar el modal
-    setHoveredClose(false); // **Establece el estado de hover en false**
+    onClose();
+    setHoveredClose(false);
   };
 
   if (!isOpen) return null;
@@ -53,31 +53,34 @@ export default function EstudiantesModal({ isOpen, onClose }) {
   return (
     <>
       <style>{modalAnimations}</style>
-      <div style={modalStyles.overlay} onClick={handleBackdropClick}>
-        <div style={modalStyles.content}>
+      <div style={modalStyles.overlay(isDark)} onClick={handleBackdropClick}>
+        <div style={modalStyles.content(isDark)}>
           <button
             onClick={handleCloseClick}
             onMouseEnter={() => setHoveredClose(true)}
             onMouseLeave={() => setHoveredClose(false)}
             style={{
-              ...modalStyles.closeButton,
-              ...(hoveredClose ? modalStyles.closeButtonHover : ""),
+              ...modalStyles.closeButton(isDark),
+              ...(hoveredClose ? modalStyles.closeButtonHover(isDark) : {}),
             }}
-            asdas={console.log(hoveredClose)}
           >
             <div style={modalStyles.closeButtonDiv}>×</div>
           </button>
-
           <div style={modalStyles.header}>
-            <h2 style={modalStyles.title}>Hincha de {estudiantesData.name}</h2>
-            <p style={modalStyles.subtitle}>{estudiantesData.founded}</p>
-            <p style={modalStyles.description}>{estudiantesData.description}</p>
-            <p style={modalStyles.hint}>
+            <h2 style={modalStyles.title(isDark)}>
+              Hincha de {estudiantesData.name}
+            </h2>
+            <p style={modalStyles.subtitle(isDark)}>
+              {estudiantesData.founded}
+            </p>
+            <p style={modalStyles.description(isDark)}>
+              {estudiantesData.description}
+            </p>
+            <p style={modalStyles.hint(isDark)}>
               💡 <strong>Toca las estrellas</strong> para conocer más detalles
               sobre cada título
             </p>
           </div>
-
           <div style={modalStyles.starsGrid}>
             {estudiantesData.stars.map((star) => {
               const isFlipped = flippedCards.has(star.id);
@@ -109,9 +112,9 @@ export default function EstudiantesModal({ isOpen, onClose }) {
                     <div
                       style={{
                         ...modalStyles.cardFace,
-                        ...modalStyles.cardFront,
+                        ...modalStyles.cardFront(isDark),
                         ...(isHovered && !isFlipped
-                          ? modalStyles.cardFrontHover
+                          ? modalStyles.cardFrontHover(isDark)
                           : {}),
                       }}
                     >
@@ -124,12 +127,16 @@ export default function EstudiantesModal({ isOpen, onClose }) {
                     <div
                       style={{
                         ...modalStyles.cardFace,
-                        ...modalStyles.cardBack,
+                        ...modalStyles.cardBack(isDark),
                       }}
                     >
-                      <div style={modalStyles.backYear}>{star.year}</div>
-                      <div style={modalStyles.backTitle}>{star.title}</div>
-                      <div style={modalStyles.backDescription}>
+                      <div style={modalStyles.backYear(isDark)}>
+                        {star.year}
+                      </div>
+                      <div style={modalStyles.backTitle(isDark)}>
+                        {star.title}
+                      </div>
+                      <div style={modalStyles.backDescription(isDark)}>
                         {star.description}
                       </div>
                     </div>

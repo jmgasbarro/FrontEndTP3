@@ -32,6 +32,7 @@ const projects = [
 
 export default function ProjectCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hovered, setHovered] = useState(null);
   const { isDark } = useTheme();
 
   const nextSlide = () => {
@@ -46,8 +47,6 @@ export default function ProjectCarousel() {
     setCurrentIndex(index);
   };
 
-  const currentProject = projects[currentIndex];
-
   return (
     <div style={styles.carousel}>
       <h2 style={styles.title(isDark)}>Proyectos Destacados</h2>
@@ -55,41 +54,54 @@ export default function ProjectCarousel() {
       <div style={styles.carouselContainer}>
         <button
           onClick={prevSlide}
-          style={styles.navButton(isDark, "left")}
+          style={{
+            ...styles.navButton(isDark, "left"),
+            ...(hovered === "prev" ? styles.navButtonHover(isDark) : {}),
+          }}
           aria-label="Anterior"
+          onMouseEnter={() => setHovered("prev")}
+          onMouseLeave={() => setHovered(null)}
         >
           ‹
         </button>
 
         <div style={styles.slideContainer}>
-          <div style={styles.slide(isDark)}>
-            <img
-              src={currentProject.image || "/placeholder.svg"}
-              alt={currentProject.title}
-              style={styles.image}
-            />
-            <div style={styles.content}>
-              <h3 style={styles.projectTitle(isDark)}>
-                {currentProject.title}
-              </h3>
-              <p style={styles.description(isDark)}>
-                {currentProject.description}
-              </p>
-              <div style={styles.techStack}>
-                {currentProject.tech.map((tech, index) => (
-                  <span key={index} style={styles.techBadge(isDark)}>
-                    {tech}
-                  </span>
-                ))}
+          {/* Este 'track' se moverá con CSS transform */}
+          <div style={styles.slideTrack(currentIndex)}>
+            {projects.map((project) => (
+              <div key={project.id} style={styles.slide(isDark)}>
+                <img
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  style={styles.image}
+                />
+                <div style={styles.content}>
+                  <h3 style={styles.projectTitle(isDark)}>{project.title}</h3>
+                  <p style={styles.description(isDark)}>
+                    {project.description}
+                  </p>
+                  <div style={styles.techStack}>
+                    {project.tech.map((tech, index) => (
+                      <span key={index} style={styles.techBadge(isDark)}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
         <button
           onClick={nextSlide}
-          style={styles.navButton(isDark, "right")}
+          style={{
+            ...styles.navButton(isDark, "right"),
+            ...(hovered === "next" ? styles.navButtonHover(isDark) : {}),
+          }}
           aria-label="Siguiente"
+          onMouseEnter={() => setHovered("next")}
+          onMouseLeave={() => setHovered(null)}
         >
           ›
         </button>
@@ -131,7 +143,6 @@ const styles = {
     position: "relative",
     display: "flex",
     alignItems: "center",
-    gap: "20px",
   },
   navButton: (isDark, position) => ({
     position: "absolute",
@@ -155,21 +166,31 @@ const styles = {
     transition: "all 0.3s ease",
     boxShadow: "0 4px 15px rgba(0, 0, 0, 0.3)",
   }),
+  navButtonHover: (isDark) => ({
+    background: isDark
+      ? "linear-gradient(90deg, #b30000 0%, #dc0000 100%)"
+      : "linear-gradient(90deg, #c62828 0%, #b71c1c 100%)",
+    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.4)",
+    transform: "translateY(-50%) scale(1.05)",
+  }),
   slideContainer: {
     flex: 1,
     overflow: "hidden",
   },
+  slideTrack: (currentIndex) => ({
+    display: "flex",
+    transition: "transform 0.5s ease-in-out", // La animación de deslizamiento
+    transform: `translateX(-${currentIndex * 100}%)`,
+  }),
   slide: (isDark) => ({
+    flex: "0 0 100%",
+    width: "100%",
     background: isDark
       ? "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)"
       : "linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)",
     borderRadius: "12px",
     overflow: "hidden",
     border: isDark ? "2px solid #333" : "2px solid #e0e0e0",
-    boxShadow: isDark
-      ? "0 8px 30px rgba(0, 0, 0, 0.5)"
-      : "0 8px 30px rgba(0, 0, 0, 0.1)",
-    animation: "scaleIn 0.5s ease",
     transition: "background 0.3s ease, border-color 0.3s ease",
   }),
   image: {
