@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTheme } from "../../hooks/useTheme";
+import { ImSearch } from "react-icons/im";
 
 export default function AntiHeroCard({ hero, onImageClick }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -34,7 +35,9 @@ export default function AntiHeroCard({ hero, onImageClick }) {
             opacity: isHovered ? 1 : 0,
           }}
         >
-          <span style={styles.overlayText}>🔍 Click para ampliar</span>
+          <span style={styles.overlayText}>
+            <ImSearch /> Click para ampliar
+          </span>
         </div>
       </div>
       <div style={styles.cardContent}>
@@ -103,6 +106,10 @@ const styles = {
     pointerEvents: "none",
   },
   overlayText: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "5px",
     color: "#fff",
     fontSize: "16px",
     fontWeight: "600",

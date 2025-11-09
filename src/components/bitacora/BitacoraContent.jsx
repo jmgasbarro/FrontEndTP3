@@ -122,10 +122,10 @@ export default function BitacoraContent() {
   const { isDark } = useTheme();
 
   return (
-    <section style={styles.container(isDark)}>
-      <div style={styles.header}>
-        <h1 style={styles.title}>📔 Bitácora del Proyecto</h1>
-        <p style={styles.subtitle}>
+    <section style={styles.container}>
+      <div style={styles.header(isDark)}>
+        <h1 style={styles.title(isDark)}>📔 Bitácora del Proyecto</h1>
+        <p style={styles.subtitle(isDark)}>
           Documentación del proceso de migración de HTML/CSS/JS a React SPA
         </p>
         <p style={styles.team}>Grupo 3 - Germán, Juan, Manuel, Nicolás</p>
@@ -137,12 +137,13 @@ export default function BitacoraContent() {
             key={index}
             title={section.title}
             items={section.items}
+            isDark={isDark}
           />
         ))}
       </div>
 
-      <div style={styles.footer}>
-        <p style={styles.footerText}>
+      <div style={styles.footer(isDark)}>
+        <p style={styles.footerText(isDark)}>
           Este proyecto representó un desafío técnico significativo que nos
           permitió profundizar en el desarrollo moderno con React, mejorando
           nuestras habilidades en arquitectura de componentes, gestión de estado
@@ -155,34 +156,32 @@ export default function BitacoraContent() {
 }
 
 const styles = {
-  container: (isDark) => ({
+  container: {
     margin: "0 auto",
     padding: "60px 40px",
     minHeight: "100vh",
-    background: isDark
-      ? "linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%)"
-      : "transparent",
-  }),
-  header: {
+  },
+  header: (isDark) => ({
     textAlign: "center",
     marginBottom: "50px",
     padding: "30px",
-    background: "rgba(139, 0, 0, 0.15)",
-    border: "2px solid #8b0000",
+    background: isDark ? "rgba(139, 0, 0, 0.15)" : "rgba(211, 47, 47, 0.05)", // Fondo claro
+    border: isDark ? "2px solid #8b0000" : "2px solid #d32f2f", // Borde claro
     borderRadius: "12px",
-  },
-  title: {
+  }),
+  title: (isDark) => ({
     fontSize: "48px",
-    color: "#ff6666",
+    color: isDark ? "#ff6666" : "#b71c1c", // Color claro
     marginBottom: "15px",
     fontWeight: "700",
     fontFamily: "'Creepster', cursive",
-  },
-  subtitle: {
+  }),
+  subtitle: (isDark) => ({
     fontSize: "18px",
     marginBottom: "10px",
     lineHeight: "1.6",
-  },
+    color: isDark ? "#b0b0b0" : "#4a4a4a", // Color de texto claro
+  }),
   team: {
     fontSize: "16px",
     color: "#4dabf7",
@@ -194,19 +193,20 @@ const styles = {
     flexDirection: "column",
     gap: "30px",
   },
-  footer: {
+  footer: (isDark) => ({
     marginTop: "60px",
     padding: "30px",
     textAlign: "center",
-    background: "rgba(77, 171, 247, 0.1)",
+    background: isDark ? "rgba(77, 171, 247, 0.1)" : "rgba(77, 171, 247, 0.05)", // Fondo claro
     border: "2px solid #4dabf7",
     borderRadius: "12px",
-  },
-  footerText: {
+  }),
+  footerText: (isDark) => ({
     fontSize: "16px",
     lineHeight: "1.8",
     marginBottom: "15px",
-  },
+    color: isDark ? "#b0b0b0" : "#4a4a4a", // Color de texto claro
+  }),
   footerDate: {
     fontSize: "14px",
     color: "#4dabf7",

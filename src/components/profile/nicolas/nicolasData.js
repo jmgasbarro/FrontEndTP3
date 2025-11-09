@@ -4,6 +4,18 @@ export const nicolasData = {
   location: "Mendoza, Argentina",
   age: "22 años",
   image: "/nicolas/nicolas-perfil.png",
+  socialMedias: [
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/weibel-nicolas/",
+      color: "#0077B5",
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/NicolasWeibel",
+      color: "#333333",
+    },
+  ],
   bio: "Soy un apasionado del desarrollo web y la gestión de proyectos. Me encanta trabajar en equipo y crear soluciones innovadoras que marquen la diferencia.",
   skills: [
     {

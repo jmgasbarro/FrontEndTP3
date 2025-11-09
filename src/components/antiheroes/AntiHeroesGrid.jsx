@@ -17,7 +17,7 @@ export default function AntiHeroesGrid({
   return (
     <>
       <div style={styles.stats}>
-        <p style={styles.statsText(isDark)}>
+        <p style={styles.statsText}>
           Mostrando {filteredHeroes.length} de {totalHeroes} antiheroes
         </p>
       </div>
@@ -64,12 +64,11 @@ const styles = {
     textAlign: "center",
     marginBottom: "30px",
   },
-  statsText: (isDark) => ({
+  statsText: {
     fontSize: "16px",
-    color: isDark ? "#888" : "#666",
     fontStyle: "italic",
     transition: "color 0.3s ease",
-  }),
+  },
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
