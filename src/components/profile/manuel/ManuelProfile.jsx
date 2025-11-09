@@ -5,7 +5,6 @@ import SkillProgressBar from "../../shared/SkillProgressBar";
 import { manuelData } from "./manuelData";
 import { manuelStyles as styles } from "./manuelStyles";
 import Pokeball from "./Pokeball";
-import PokemonGame from "./PokemonGame";
 
 export default function ManuelProfile() {
   const isTablet = useMediaQuery("(min-width: 768px)");
@@ -133,12 +132,6 @@ export default function ManuelProfile() {
                 <Pokeball key={index} item={song} type="music" />
               ))}
             </div>
-          </div>
-
-          {/* Pokemon Game */}
-          <div style={styles.section}>
-            <h3 style={styles.buttonText}>🎮 Mini Juego</h3>
-            <PokemonGame />
           </div>
         </div>
       </section>
