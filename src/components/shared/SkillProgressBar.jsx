@@ -19,7 +19,7 @@ export default function SkillProgressBar({ skill, level, delay = 500 }) {
     <div 
       style={{
         ...styles.container,
-        transform: isHovered ? 'translateX(10px) scale(1.05)' : 'translateX(0) scale(1)',
+        transform: isHovered ? 'translateX(10px) scale(1.15)' : 'translateX(0) scale(1)',
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

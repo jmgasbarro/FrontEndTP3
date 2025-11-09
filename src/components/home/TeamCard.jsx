@@ -26,7 +26,10 @@ export default function TeamCard({ member }) {
           style={{
             ...styles.cardImage,
             ...(isHovered ? styles.cardImageHover : {}),
-            objectPosition: member.id === "german" ? "center 10%" : "center",
+            objectPosition: 
+              member.id === "german" ? "center 10%" : 
+              member.id === "manuel" ? "center 30%" : 
+              "center",
           }}
         />
       </div>

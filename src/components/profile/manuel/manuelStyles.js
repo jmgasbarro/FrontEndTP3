@@ -31,6 +31,7 @@ export const manuelStyles = {
     height: "200px",
     borderRadius: "50%",
     objectFit: "cover",
+    objectPosition: "center 30%",
     border: "4px solid #ff0000",
     boxShadow: "0 0 30px rgba(255, 0, 0, 0.5)",
   },
