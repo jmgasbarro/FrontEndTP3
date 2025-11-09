@@ -61,12 +61,12 @@ export default function ManuelProfile() {
               title={social.name}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform =
-                  "scale(1.15) translateY(-2px)";
+                  "scale(1.15) translateY(-2px) rotate(360deg)";
                 e.currentTarget.style.boxShadow =
                   "0 8px 30px rgba(255, 0, 0, 0.6)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1) translateY(0)";
+                e.currentTarget.style.transform = "scale(1) translateY(0) rotate(0deg)";
                 e.currentTarget.style.boxShadow =
                   "0 4px 15px rgba(255, 0, 0, 0.4)";
               }}

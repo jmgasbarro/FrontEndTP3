@@ -2,20 +2,22 @@ import { useState } from "react";
 
 export default function Pokeball({ item, type }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <>
       {/* Pokebola */}
       <div
         onClick={() => setIsOpen(true)}
-        style={styles.pokeballContainer}
+        style={{
+          ...styles.pokeballContainer,
+          transform: isHovered
+            ? "scale(1.15) translateY(-2px) rotate(360deg)"
+            : "scale(1) translateY(0) rotate(0deg)",
+        }}
         className="pokeball-wobble"
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.15)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1)";
-        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <img 
           src="/manuel/pokebola.png" 
@@ -101,7 +103,7 @@ export default function Pokeball({ item, type }) {
 const styles = {
   pokeballContainer: {
     cursor: "pointer",
-    transition: "transform 0.3s ease",
+    transition: "transform 0.6s ease",
     display: "inline-block",
   },
   pokeballImage: {
