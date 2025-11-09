@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function PokemonGame() {
   const [isGameOpen, setIsGameOpen] = useState(false);
@@ -27,27 +27,34 @@ export default function PokemonGame() {
     }
   ];
 
+  useEffect(() => {
+    if (isGameOpen && selectedGame) {
+      // Limpiar scripts anteriores
+      const oldScripts = document.querySelectorAll('script[src*="emulatorjs"]');
+      oldScripts.forEach(script => script.remove());
+      
+      // Configurar variables globales para EmulatorJS
+      window.EJS_player = '#emulator-game';
+      window.EJS_core = 'gba';
+      window.EJS_gameUrl = selectedGame.rom;
+      window.EJS_pathtodata = 'https://cdn.emulatorjs.org/';
+      window.EJS_backgroundColor = '#000000';
+      
+      // Cargar el script del emulador
+      const script = document.createElement('script');
+      script.src = 'https://cdn.emulatorjs.org/loader.js';
+      script.async = true;
+      document.body.appendChild(script);
+      
+      return () => {
+        script.remove();
+      };
+    }
+  }, [isGameOpen, selectedGame]);
+
   const loadEmulator = (game) => {
     setSelectedGame(game);
     setIsGameOpen(true);
-    
-    // Cargar EmulatorJS con ROM desde GitHub
-    setTimeout(() => {
-      const gameContainer = document.getElementById('emulator-wrapper');
-      if (gameContainer) {
-        gameContainer.innerHTML = `
-          <div id='emulator-game' style='width:100%; height:100%'></div>
-          <script type='text/javascript'>
-            EJS_player = '#emulator-game';
-            EJS_core = 'gba';
-            EJS_gameUrl = '${game.rom}';
-            EJS_pathtodata = 'https://cdn.emulatorjs.org/';
-            EJS_backgroundColor = '#000000';
-          </script>
-          <script src='https://cdn.emulatorjs.org/loader.js'></script>
-        `;
-      }
-    }, 100);
   };
 
   return (
@@ -107,7 +114,8 @@ export default function PokemonGame() {
           </div>
 
           {/* Contenedor del emulador */}
-          <div style={styles.emulatorWrapper} id='emulator-wrapper'>
+          <div style={styles.emulatorWrapper}>
+            <div id='emulator-game' style={{width: '100%', height: '100%'}}></div>
           </div>
         </div>
       )}
