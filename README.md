@@ -176,6 +176,7 @@ Se crearon **botones de redes sociales** con efectos visuales al hover, integrad
   ![Antes - Links simples o inexistentes](public/tp3/05-social-antes.jpg)
 - Después:  
   ![Después - Botones de redes animados](public/tp3/05-social-despues.jpg)
+  ![Después - Botones de redes animados](public/tp3/05-social-hover.jpg)
 
 ---
 
