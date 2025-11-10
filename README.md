@@ -146,6 +146,7 @@ Se agregaron **barras de progreso** para visualizar los niveles de habilidades d
 - Después:  
   ![Después - Barras de skill animadas](public/tp3/04-skills-despues.jpg)
 - Modo 540 X 720:
+
   ![Modo Responsive](public/tp3/04-skills-responsive.jpg)
 
 ---
