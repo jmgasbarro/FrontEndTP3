@@ -145,6 +145,8 @@ Se agregaron **barras de progreso** para visualizar los niveles de habilidades d
   ![Antes - Sin barras de skill](public/tp3/04-skills-antes.jpg)
 - Después:  
   ![Después - Barras de skill animadas](public/tp3/04-skills-despues.jpg)
+- Modo 540 X 720:
+  ![Modo Responsive](public/tp3/04-skills-responsive.jpg)
 
 ---
 
@@ -254,9 +256,9 @@ Además de las 5 mejoras sugeridas en la consigna, implementamos una **mejora pr
   ![Tema Claro](public/tp3/07-sin-claro-oscuro.jpg)
 
 - Tema Claro:  
-  ![Tema Claro](public/tp3/07-tema-claro.jpg)
+  ![Tema Claro](public/tp3/06-theme-light.jpg)
 - Tema Oscuro:  
-  ![Tema Oscuro](public/tp3/07-tema-oscuro.jpg)
+  ![Tema Oscuro](public/tp3/06-theme-dark.jpg)
 
 ---
 
