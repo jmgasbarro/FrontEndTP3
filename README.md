@@ -114,9 +114,9 @@ La galería de antihéroes ahora permite abrir las imágenes en un **lightbox** 
 **Capturas:**
 
 - Antes:  
-  `![Antes - Sin lightbox](public/tp3/02-lightbox-antes.jpg)`
+  ![Antes - Sin barras de skill](public/tp3/03-animaciones-antes.jpg)
 - Después:  
-  `![Después - Lightbox activo](public/tp3/02-lightbox-despues.jpg)`
+  ![Después - Barras de skill animadas](public/tp3/03-animaciones-despues.jpg)
 
 ---
 
@@ -142,9 +142,9 @@ Se agregaron **barras de progreso** para visualizar los niveles de habilidades d
 **Capturas:**
 
 - Antes:  
-  ![Antes - Sin barras de skill](public/tp3/03-animaciones-antes.jpg)
+  ![Antes - Sin barras de skill](public/tp3/04-skills-antes.jpg)
 - Después:  
-  ![Después - Barras de skill animadas](public/tp3/03-animaciones-despues.jpg)
+  ![Después - Barras de skill animadas](public/tp3/04-skills-despues.jpg)
 
 ---
 
