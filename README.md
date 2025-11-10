@@ -142,9 +142,9 @@ Se agregaron **barras de progreso** para visualizar los niveles de habilidades d
 **Capturas:**
 
 - Antes:  
-  `![Antes - Sin barras de skill](public/tp3/03-skills-antes.jpg)`
+  ![Antes - Sin barras de skill](public/tp3/03-animaciones-antes.jpg)
 - Después:  
-  `![Después - Barras de skill animadas](public/tp3/03-skills-despues.jpg)`
+  ![Después - Barras de skill animadas](public/tp3/03-animaciones-despues.jpg)
 
 ---
 
