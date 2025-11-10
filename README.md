@@ -79,15 +79,15 @@ Se añadieron transiciones y animaciones suaves en distintas partes de la UI par
 
 **Capturas:**
 
-- Antes:  
-  `![Antes - Sin animaciones](public/tp3/01-animaciones-antes.jpg)`
-- Después:  
-  `![Después - Animaciones suaves](public/tp3/01-animaciones-despues.jpg)`
+- Antes:  
+  ![Antes - Sin animaciones](public/tp3/01-animaciones-antes.jpg)
+- Después:  
+  ![Después - Animaciones suaves](public/tp3/01-animaciones-despues.jpg)
 
-- Antes:  
-  `![Antes - Sin animaciones](public/tp3/02-animaciones-antes.jpg)`
-- Después:  
-  `![Después - Animaciones suaves](public/tp3/02-animaciones-despues.jpg)`
+- Antes:  
+  ![Antes - Sin animaciones](public/tp3/02-animaciones-antes.jpg)
+- Después:  
+  ![Después - Animaciones suaves](public/tp3/02-animaciones-despues.jpg)
 
 ---
 
