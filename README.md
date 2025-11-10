@@ -170,9 +170,9 @@ Se crearon **botones de redes sociales** con efectos visuales al hover, integrad
 **Capturas:**
 
 - Antes:  
-  `![Antes - Links simples o inexistentes](public/tp3/04-social-antes.jpg)`
+  ![Antes - Links simples o inexistentes](public/tp3/05-social-antes.jpg)
 - Después:  
-  `![Después - Botones de redes animados](public/tp3/04-social-despues.jpg)`
+  ![Después - Botones de redes animados](public/tp3/05-social-despues.jpg)
 
 ---
 
@@ -199,9 +199,9 @@ Se desarrolló un **carrusel de proyectos** para mostrar trabajos ficticios o re
 **Capturas:**
 
 - Antes:  
-  `![Antes - Sin carrusel](public/tp3/05-carousel-antes.jpg)`
+  ![Antes - Sin carrusel](public/tp3/06-sin-seccion-proyectos.jpg)
 - Después:  
-  `![Después - Carrusel de proyectos](public/tp3/05-carousel-despues.jpg)`
+  ![Después - Carrusel de proyectos](public/tp3/06-seccion-proyectos-carrusel.jpg)
 
 ---
 
@@ -250,10 +250,13 @@ Además de las 5 mejoras sugeridas en la consigna, implementamos una **mejora pr
 
 **Capturas:**
 
+- Sin Tema Claro/Oscuro:
+  ![Tema Claro](public/tp3/07-sin-claro-oscuro.jpg)
+
 - Tema Claro:  
-  `![Tema Claro](public/tp3/06-theme-light.jpg)`
+  ![Tema Claro](public/tp3/07-tema-claro.jpg)
 - Tema Oscuro:  
-  `![Tema Oscuro](public/tp3/06-theme-dark.jpg)`
+  ![Tema Oscuro](public/tp3/07-tema-oscuro.jpg)
 
 ---
 
