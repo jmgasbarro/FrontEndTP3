@@ -258,9 +258,9 @@ Además de las 5 mejoras sugeridas en la consigna, implementamos una **mejora pr
   ![Tema Claro](public/tp3/07-sin-claro-oscuro.jpg)
 
 - Tema Claro:  
-  ![Tema Claro](public/tp3/06-theme-light.jpg)
+  ![Tema Claro](public/tp3/07-tema-claro.jpg)
 - Tema Oscuro:  
-  ![Tema Oscuro](public/tp3/06-theme-dark.jpg)
+  ![Tema Oscuro](public/tp3/07-tema-oscuro.jpg)
 
 ---
 
