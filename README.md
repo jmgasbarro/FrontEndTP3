@@ -51,8 +51,6 @@ El foco del TP3 fue **refinar la SPA existente**, mejorando la UX/UI y la experi
 A continuación se documentan las **cinco mejoras obligatorias** (según el enunciado del TP3) y **una mejora propia adicional**.  
 Cada mejora incluye descripción, archivos involucrados y capturas de antes/después (según exige la consigna).
 
-> 💡 Las rutas de las imágenes son de ejemplo. Una vez generadas las capturas, se pueden guardar por ejemplo en `public/tp3/` y ajustar la ruta.
-
 ---
 
 ### 1️⃣ Animaciones Suaves en la Interfaz
@@ -80,14 +78,14 @@ Se añadieron transiciones y animaciones suaves en distintas partes de la UI par
 **Capturas:**
 
 - Antes:  
-  ![Antes - Sin animaciones](public/tp3/01-animaciones-antes.jpg)
+    ![Antes - Sin animaciones](public/tp3/01-animaciones-antes.jpg)
 - Después:  
-  ![Después - Animaciones suaves](public/tp3/01-animaciones-despues.jpg)
+    ![Después - Animaciones suaves](public/tp3/01-animaciones-despues.jpg)
 
 - Antes:  
-  ![Antes - Sin animaciones](public/tp3/02-animaciones-antes.jpg)
+    ![Antes - Sin animaciones](public/tp3/02-animaciones-antes.jpg)
 - Después:  
-  ![Después - Animaciones suaves](public/tp3/02-animaciones-despues.jpg)
+    ![Después - Animaciones suaves](public/tp3/02-animaciones-despues.jpg)
 
 ---
 
@@ -99,9 +97,8 @@ La galería de antihéroes ahora permite abrir las imágenes en un **lightbox** 
 **Características:**
 
 - Grid de tarjetas que disparan un **lightbox** al hacer click.
-- Navegación entre imágenes (anterior / siguiente).
 - Cierre con botón de cierre o tecla **ESC**.
-- Efecto de **zoom / fade** al mostrar la imagen.
+- Permite ver la imagen en gran tamaño.
 - Fondo oscurecido para enfocar la imagen.
 
 **Archivos principales:**
@@ -160,13 +157,10 @@ Se crearon **botones de redes sociales** con efectos visuales al hover, integrad
 
 - Iconos para redes como LinkedIn, GitHub, etc.
 - Efectos de **hover**: cambio de color, escala, sombra.
-- Enlaces placeholder o ficticios (según consigna).
-- Componente reutilizable, utilizado en múltiples secciones.
+- Enlaces placeholder o ficticios.
 
 **Archivos principales:**
 
-- **Creado:** `src/components/shared/SocialButton.jsx`  
-  ↳ Botón reutilizable para redes.
 - **Utilizado en:**
   - `src/components/profile/juan/JuanProfile.jsx` y otros perfiles.
 
@@ -190,7 +184,6 @@ Se desarrolló un **carrusel de proyectos** para mostrar trabajos ficticios o re
 - Navegación con flechas **anterior / siguiente**.
 - Indicadores **dots** para la posición actual.
 - Animación tipo **slide** entre proyectos.
-- Soporte para auto-play (opcional).
 - Componente reutilizable que se integra fácilmente en la Home.
 
 **Archivos principales:**
@@ -248,7 +241,6 @@ Además de las 5 mejoras sugeridas en la consigna, implementamos una **mejora pr
   - `src/components/diagrams/ComponentTreeDiagram.jsx`
   - `src/components/diagrams/FolderStructureDiagram.jsx`
   - `src/components/diagrams/DiagramsTabs.jsx`
-  - `src/components/profile/nicolas/NicolasProfile.jsx`
   - `src/components/profile/nicolas/EstudiantesModal.jsx`
   - (y otros componentes menores donde se ajustaron colores y fondos)
 
